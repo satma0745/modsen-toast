@@ -3,7 +3,14 @@ import Toast from '../components/Toast'
 
 export default {
   title: 'Components/Toast',
-  component: Toast
+  component: Toast,
+  decorators: [
+    (Story) => (
+      <div style={{ fontFamily: '"Helvetica", "Arial", sans-serif' }}>
+        <Story />
+      </div>
+    )
+  ]
 }
 
 const Template = (args) => <Toast {...args} />

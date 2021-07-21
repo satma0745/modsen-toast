@@ -5,7 +5,14 @@ import { NotificationContextProvider } from '../../data'
 
 export default {
   title: 'Example/Page',
-  component: Page
+  component: Page,
+  decorators: [
+    (Story) => (
+      <article style={{ fontFamily: '"Helvetica", "Arial", sans-serif' }}>
+        <Story />
+      </article>
+    )
+  ]
 }
 
 export const PageWithNotifications = () => (
