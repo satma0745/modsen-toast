@@ -1,12 +1,17 @@
 import React from 'react'
 import useNotifications from '../../data/useNotifications'
 import ToastStack from '../../components/ToastStack'
+import styled from 'styled-components'
+
+const Article = styled.article`
+  font-family: 'Helvetica', 'Arial', sans-serif;
+`
 
 const Page = () => {
   const [notifications, send] = useNotifications()
 
   return (
-    <article>
+    <Article>
       <section>
         <button onClick={() => send('Info', 'Info toast example')}>
           Send info notification
@@ -24,7 +29,7 @@ const Page = () => {
       <section>
         <ToastStack notifications={notifications} />
       </section>
-    </article>
+    </Article>
   )
 }
 
