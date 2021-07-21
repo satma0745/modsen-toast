@@ -1,22 +1,22 @@
 import React from 'react'
-import useNotifications from './useNotifications'
+import useNotifications from '../../data/useNotifications'
 import ToastStack from '../../components/ToastStack'
 
 const Page = () => {
-  const [notifications, notify] = useNotifications()
+  const [notifications, send] = useNotifications()
 
   return (
     <article>
       <section>
-        <button onClick={() => notify('Info', 'Info toast example')}>
+        <button onClick={() => send('Info', 'Info toast example')}>
           Send info notification
         </button>
 
-        <button onClick={() => notify('Warning', 'Warning toast example')}>
+        <button onClick={() => send('Warning', 'Warning toast example')}>
           Send warning notification
         </button>
 
-        <button onClick={() => notify('Error', 'Error toast example')}>
+        <button onClick={() => send('Error', 'Error toast example')}>
           Send error notification
         </button>
       </section>
