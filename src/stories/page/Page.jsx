@@ -24,6 +24,10 @@ const Page = () => {
         <button onClick={() => send('Error', 'Error toast example')}>
           Send error notification
         </button>
+
+        <button onClick={() => send('Success', 'Success toast example')}>
+          Send success notification
+        </button>
       </section>
 
       <section>

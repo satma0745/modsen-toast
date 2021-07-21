@@ -25,3 +25,9 @@ Error.args = {
   type: 'Error',
   text: 'Error toast example'
 }
+
+export const Success = Template.bind({})
+Success.args = {
+  type: 'Success',
+  text: 'Success toast example'
+}
