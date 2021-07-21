@@ -15,6 +15,8 @@ const addNotification = (type, text) => {
   }
 
   state.notifications = [...state.notifications, notification]
+  setTimeout(() => notification.dismiss(), 1000)
+
   notifySubscribers()
 }
 
