@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ErrorToast, InfoToast, SuccessToast, WarningToast } from './kinds'
+import { ErrorToast, InfoToast, SuccessToast, WarningToast } from './Kinds'
 
 const Toast = ({ type, ...props }) => {
   switch (type) {

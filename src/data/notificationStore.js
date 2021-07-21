@@ -6,13 +6,23 @@ const state = {
 }
 
 const addNotification = (type, text) => {
+  const notificationId = generateId()
   const notification = {
-    id: generateId(),
+    id: notificationId,
     type,
-    text
+    text,
+    dismiss: () => removeNotification(notificationId)
   }
 
   state.notifications = [...state.notifications, notification]
+  notifySubscribers()
+}
+
+const removeNotification = (notificationId) => {
+  state.notifications = state.notifications.filter(
+    (notification) => notification.id !== notificationId
+  )
+
   notifySubscribers()
 }
 

@@ -8,8 +8,8 @@ const ToastStack = () => {
 
   return (
     <div>
-      {notifications.map(({ id, type, text }) => (
-        <Toast key={id} type={type} text={text} />
+      {notifications.map(({ id, type, text, dismiss }) => (
+        <Toast key={id} type={type} text={text} dismiss={() => dismiss()} />
       ))}
     </div>
   )
