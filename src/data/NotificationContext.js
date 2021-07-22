@@ -1,11 +1,19 @@
 import React, { useState, useEffect, createContext } from 'react'
-import { getNotifications, subscribe } from './notificationStore'
+import {
+  addNotification,
+  getNotifications,
+  subscribe
+} from './notificationStore'
 
 const NotificationContext = createContext()
 
-const NotificationContextProvider = ({ children }) => {
+const NotificationContextProvider = ({ stockNotifications = [], children }) => {
   const [notifications, setNotifications] = useState(getNotifications())
   useEffect(() => subscribe(setNotifications), [setNotifications])
+
+  useEffect(() => {
+    stockNotifications.forEach(({ type, text }) => addNotification(type, text))
+  }, [stockNotifications])
 
   return (
     <NotificationContext.Provider value={notifications}>
