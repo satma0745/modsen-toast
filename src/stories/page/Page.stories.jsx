@@ -8,7 +8,12 @@ export default {
   component: Page,
   decorators: [
     (Story) => (
-      <article style={{ fontFamily: '"Helvetica", "Arial", sans-serif' }}>
+      <article
+        style={{
+          fontFamily: '"Helvetica", "Arial", sans-serif',
+          fontSize: '32px'
+        }}
+      >
         <Story />
       </article>
     )

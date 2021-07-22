@@ -6,7 +6,12 @@ export default {
   component: Toast,
   decorators: [
     (Story) => (
-      <div style={{ fontFamily: '"Helvetica", "Arial", sans-serif' }}>
+      <div
+        style={{
+          fontFamily: '"Helvetica", "Arial", sans-serif',
+          fontSize: '32px'
+        }}
+      >
         <Story />
       </div>
     )
