@@ -4,24 +4,22 @@ import Page from './Page'
 import { NotificationContextProvider } from '../../data'
 
 export default {
-  title: 'Example/Page',
+  title: 'Example/NotificationsPage',
   component: Page,
-  decorators: [
-    (Story) => (
-      <article
-        style={{
-          fontFamily: '"Helvetica", "Arial", sans-serif',
-          fontSize: '32px'
-        }}
-      >
-        <Story />
-      </article>
-    )
-  ]
+  argTypes: {
+    toastsPosition: {
+      options: ['top-right', 'bottom-right', 'bottom-left', 'top-left'],
+      control: { type: 'select' }
+    }
+  }
 }
 
-export const PageWithNotifications = () => (
+export const Default = (props) => (
   <NotificationContextProvider>
-    <Page />
+    <Page {...props} />
   </NotificationContextProvider>
 )
+Default.storyName = 'NotificationsPage'
+Default.args = {
+  toastsPosition: 'top-right'
+}

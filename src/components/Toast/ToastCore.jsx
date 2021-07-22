@@ -12,7 +12,7 @@ const Surface = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 0 1em;
-  margin: 1em 2em;
+  margin: 1em;
   position: relative;
 `
 
