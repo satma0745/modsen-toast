@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import ToastStack from './ToastStack'
+import PropTypes from 'prop-types'
+
+import ToastStack from '../Core'
+import PositioningWrapper from './PositioningWrapper'
 
 const configureParentNodeStyling = (parentNode) => {
   const oldPosition = parentNode.style.position
@@ -12,41 +15,32 @@ const configureParentNodeStyling = (parentNode) => {
   return undo
 }
 
-const positioningStyle = (position) => {
-  switch (position) {
-    case 'top-right':
-      return { top: 0, right: 0 }
-    case 'bottom-right':
-      return { bottom: 0, right: 0 }
-    case 'bottom-left':
-      return { bottom: 0, left: 0 }
-    case 'top-left':
-      return { top: 0, left: 0 }
-  }
-}
-
-const PositioningWrapper = ({ position, children }) => (
-  <div style={{ position: 'absolute', ...positioningStyle(position) }}>
-    {children}
-  </div>
-)
-
 const stackDirection = (stackPosition) => {
   return stackPosition.startsWith('top') ? 'top-down' : 'down-top'
 }
 
-const Toasts = ({
-  position = 'bottom-right',
-  parentNode = document.querySelector('#root')
-}) => {
+const Toasts = ({ position, parentNode, ...props }) => {
   useEffect(() => configureParentNodeStyling(parentNode), [parentNode])
 
   return ReactDOM.createPortal(
-    <PositioningWrapper position={position}>
+    <PositioningWrapper {...props} position={position}>
       <ToastStack direction={stackDirection(position)} />
     </PositioningWrapper>,
     parentNode
   )
+}
+Toasts.propTypes = {
+  position: PropTypes.oneOf([
+    'top-right',
+    'bottom-right',
+    'bottom-left',
+    'top-left'
+  ]),
+  parentNode: PropTypes.instanceOf(Element).isRequired
+}
+Toasts.defaultProps = {
+  position: 'top-right',
+  parentNode: document.querySelector('#root')
 }
 
 export default Toasts

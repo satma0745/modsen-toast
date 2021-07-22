@@ -1,3 +1,3 @@
-import ToastsStackPortal from './ToastsStackPortal'
+import ToastsStackPortal from './Portal'
 
 export default ToastsStackPortal
