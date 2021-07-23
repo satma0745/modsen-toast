@@ -18,7 +18,7 @@ export default {
   ]
 }
 
-const Template = (args) => <Toast {...args} />
+const Template = (args) => <Toast dismiss={() => {}} {...args} />
 
 export const Info = Template.bind({})
 Info.args = {

@@ -1,19 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import dismissIcon from '../assets/dismiss.svg'
-
 import Surface from './Surface'
-import { DismissButton, Content, Icon, Text } from './InnerElements'
+import Content from './Content'
+import DismissButton from './DismissButton'
 
 const ToastCore = ({ fgColor, bgColor, icon, text, dismiss, ...props }) => (
   <Surface color={bgColor} {...props}>
-    <Content>
-      <Icon src={icon} />
-      <Text color={fgColor}>{text}</Text>
-    </Content>
-
-    <DismissButton src={dismissIcon} onClick={() => dismiss()} />
+    <Content icon={icon} color={fgColor} text={text} />
+    <DismissButton color={fgColor} onClick={() => dismiss()} />
   </Surface>
 )
 ToastCore.propTypes = {
