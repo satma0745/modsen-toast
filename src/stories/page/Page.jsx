@@ -3,7 +3,13 @@ import './styles.css'
 import { addNotification as send } from '../../data/notificationStore'
 import ToastsStack from '../../components/ToastsStack'
 
-const Page = ({ toastsPosition, ...props }) => (
+const Page = ({
+  position,
+  parentNode,
+  edgeDistance,
+  internalSpacing,
+  ...props
+}) => (
   <section {...props}>
     <button onClick={() => send('Info', 'Info toast example')}>
       Send info notification
@@ -21,7 +27,12 @@ const Page = ({ toastsPosition, ...props }) => (
       Send success notification
     </button>
 
-    <ToastsStack position={toastsPosition} />
+    <ToastsStack
+      position={position}
+      parentNode={parentNode}
+      edgeDistance={edgeDistance}
+      internalSpacing={internalSpacing}
+    />
   </section>
 )
 export default Page

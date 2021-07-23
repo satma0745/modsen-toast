@@ -1,21 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const style = (position) => {
+const style = (position, offset) => {
   switch (position) {
     case 'top-right':
-      return { top: 0, right: 0 }
+      return { top: offset, right: offset }
     case 'bottom-right':
-      return { bottom: 0, right: 0 }
+      return { bottom: offset, right: offset }
     case 'bottom-left':
-      return { bottom: 0, left: 0 }
+      return { bottom: offset, left: offset }
     case 'top-left':
-      return { top: 0, left: 0 }
+      return { top: offset, left: offset }
   }
 }
 
-const PositioningWrapper = ({ position, children, ...props }) => (
-  <div {...props} style={{ position: 'absolute', ...style(position) }}>
+const PositioningWrapper = ({ position, children, offset, ...props }) => (
+  <div {...props} style={{ position: 'absolute', ...style(position, offset) }}>
     {children}
   </div>
 )
@@ -29,7 +29,8 @@ PositioningWrapper.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired
+  ]).isRequired,
+  offset: PropTypes.string.isRequired
 }
 
 export default PositioningWrapper

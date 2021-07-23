@@ -4,15 +4,18 @@ import PropTypes from 'prop-types'
 const Surface = styled.div`
   height: 6em;
   width: 20em;
-  background-color: ${({ color }) => color};
-  box-shadow: 0.125em 0.125em 0.25em #00000029;
+
+  padding: 0 1em;
+
   border-radius: 0.75em;
+  box-shadow: 0.125em 0.125em 0.25em #00000029;
+  background-color: ${({ color }) => color};
+
+  position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 1em;
-  margin: 1em;
-  position: relative;
 `
 Surface.propTypes = {
   color: PropTypes.string.isRequired

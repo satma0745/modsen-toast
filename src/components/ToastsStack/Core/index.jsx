@@ -6,11 +6,21 @@ import { useNotifications } from '../../../data'
 import Container from './Container'
 import AnimatedToasts from './AnimatedToasts'
 
-const ToastStack = ({ toastsDirection, slideFrom, slideTo, ...props }) => {
+const ToastStack = ({
+  toastsDirection,
+  slideFrom,
+  slideTo,
+  internalSpacing,
+  ...props
+}) => {
   const [notifications] = useNotifications()
 
   return (
-    <Container direction={toastsDirection} {...props}>
+    <Container
+      direction={toastsDirection}
+      internalSpacing={internalSpacing}
+      {...props}
+    >
       <AnimatedToasts
         notifications={notifications}
         slideFrom={slideFrom}
@@ -21,11 +31,9 @@ const ToastStack = ({ toastsDirection, slideFrom, slideTo, ...props }) => {
 }
 ToastStack.propTypes = {
   toastsDirection: PropTypes.oneOf(['top-down', 'down-top']),
-  slideFrom: PropTypes.string,
-  slideTo: PropTypes.string
-}
-ToastStack.defaultProps = {
-  toastsDirection: 'top-down'
+  slideFrom: PropTypes.string.isRequired,
+  slideTo: PropTypes.string.isRequired,
+  internalSpacing: PropTypes.string.isRequired
 }
 
 export default ToastStack

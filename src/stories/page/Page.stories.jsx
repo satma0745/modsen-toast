@@ -7,7 +7,7 @@ export default {
   title: 'Example/NotificationsPage',
   component: Page,
   argTypes: {
-    toastsPosition: {
+    position: {
       options: ['top-right', 'bottom-right', 'bottom-left', 'top-left'],
       control: { type: 'select' }
     }
@@ -16,10 +16,12 @@ export default {
 
 export const Default = (props) => (
   <NotificationContextProvider>
-    <Page {...props} />
+    <Page parentNode={document.querySelector('#root')} {...props} />
   </NotificationContextProvider>
 )
 Default.storyName = 'NotificationsPage'
 Default.args = {
-  toastsPosition: 'top-right'
+  position: 'top-right',
+  edgeDistance: '2rem',
+  internalSpacing: '1rem'
 }

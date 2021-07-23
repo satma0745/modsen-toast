@@ -10,14 +10,33 @@ const flexDirection = (direction) => {
   }
 }
 
+const marginPlacement = (direction) => {
+  switch (direction) {
+    case 'top-down':
+      return 'bottom'
+    case 'down-top':
+      return 'top'
+  }
+}
+
 const Container = styled.div`
+  overflow-x: hidden;
+
   display: flex;
   flex-direction: ${({ direction }) => flexDirection(direction)};
-  padding: 1em;
-  overflow-x: hidden;
+
+  > * {
+    margin-${({ direction }) => marginPlacement(direction)}:
+      ${({ internalSpacing }) => internalSpacing};
+  }
+
+  > *:last-child {
+    margin-${({ direction }) => marginPlacement(direction)}: 0;
+  }
 `
 Container.propTypes = {
-  direction: PropTypes.oneOf(['top-down', 'down-top'])
+  direction: PropTypes.oneOf(['top-down', 'down-top']),
+  internalSpacing: PropTypes.string.isRequired
 }
 
 export default Container
