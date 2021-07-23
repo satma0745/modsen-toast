@@ -10,19 +10,20 @@ import { styleParentNode, stackDirection, slidingSide } from './utils'
 const Toasts = ({
   position,
   parentNode,
-  edgeDistance,
   internalSpacing,
+  edgeDistance,
   ...props
 }) => {
   useEffect(() => styleParentNode(parentNode), [parentNode])
 
   return ReactDOM.createPortal(
-    <PositioningWrapper {...props} position={position} offset={edgeDistance}>
+    <PositioningWrapper {...props} position={position}>
       <ToastStack
         toastsDirection={stackDirection(position)}
         slideFrom={slidingSide(position)}
         slideTo={slidingSide(position)}
         internalSpacing={internalSpacing}
+        edgeDistance={edgeDistance}
       />
     </PositioningWrapper>,
     parentNode

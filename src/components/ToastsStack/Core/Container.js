@@ -20,6 +20,7 @@ const marginPlacement = (direction) => {
 }
 
 const Container = styled.div`
+  padding: ${({ edgeDistance }) => edgeDistance};
   overflow-x: hidden;
 
   display: flex;
@@ -36,7 +37,8 @@ const Container = styled.div`
 `
 Container.propTypes = {
   direction: PropTypes.oneOf(['top-down', 'down-top']),
-  internalSpacing: PropTypes.string.isRequired
+  internalSpacing: PropTypes.string.isRequired,
+  edgeDistance: PropTypes.string.isRequired
 }
 
 export default Container

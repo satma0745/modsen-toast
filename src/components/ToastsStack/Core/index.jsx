@@ -11,6 +11,7 @@ const ToastStack = ({
   slideFrom,
   slideTo,
   internalSpacing,
+  edgeDistance,
   ...props
 }) => {
   const [notifications] = useNotifications()
@@ -19,6 +20,7 @@ const ToastStack = ({
     <Container
       direction={toastsDirection}
       internalSpacing={internalSpacing}
+      edgeDistance={edgeDistance}
       {...props}
     >
       <AnimatedToasts
@@ -33,7 +35,8 @@ ToastStack.propTypes = {
   toastsDirection: PropTypes.oneOf(['top-down', 'down-top']),
   slideFrom: PropTypes.string.isRequired,
   slideTo: PropTypes.string.isRequired,
-  internalSpacing: PropTypes.string.isRequired
+  internalSpacing: PropTypes.string.isRequired,
+  edgeDistance: PropTypes.string.isRequired
 }
 
 export default ToastStack
