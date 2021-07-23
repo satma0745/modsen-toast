@@ -19,12 +19,20 @@ const stackDirection = (stackPosition) => {
   return stackPosition.startsWith('top') ? 'top-down' : 'down-top'
 }
 
+const slidingSide = (stackPosition) => {
+  return stackPosition.split('-')[1]
+}
+
 const Toasts = ({ position, parentNode, ...props }) => {
   useEffect(() => configureParentNodeStyling(parentNode), [parentNode])
 
   return ReactDOM.createPortal(
     <PositioningWrapper {...props} position={position}>
-      <ToastStack direction={stackDirection(position)} />
+      <ToastStack
+        toastsDirection={stackDirection(position)}
+        slideFrom={slidingSide(position)}
+        slideTo={slidingSide(position)}
+      />
     </PositioningWrapper>,
     parentNode
   )

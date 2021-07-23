@@ -1,27 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Toast from '../../Toast'
 import { useNotifications } from '../../../data'
 
 import Container from './Container'
+import AnimatedToasts from './AnimatedToasts'
 
-const ToastStack = ({ direction, ...props }) => {
+const ToastStack = ({ toastsDirection, slideFrom, slideTo, ...props }) => {
   const [notifications] = useNotifications()
 
   return (
-    <Container direction={direction} {...props}>
-      {notifications.map(({ id, type, text, dismiss }) => (
-        <Toast key={id} type={type} text={text} dismiss={() => dismiss()} />
-      ))}
+    <Container direction={toastsDirection} {...props}>
+      <AnimatedToasts
+        notifications={notifications}
+        slideFrom={slideFrom}
+        slideTo={slideTo}
+      />
     </Container>
   )
 }
 ToastStack.propTypes = {
-  direction: PropTypes.oneOf(['top-down', 'down-top'])
+  toastsDirection: PropTypes.oneOf(['top-down', 'down-top']),
+  slideFrom: PropTypes.string,
+  slideTo: PropTypes.string
 }
 ToastStack.defaultProps = {
-  direction: 'top-down'
+  toastsDirection: 'top-down'
 }
 
 export default ToastStack

@@ -60,6 +60,7 @@
   ],
   "dependencies": {
     "prop-types": "^15.7.2",
+    "react-spring": "^9.2.4",
     "styled-components": "^5.3.0"
   }
 }

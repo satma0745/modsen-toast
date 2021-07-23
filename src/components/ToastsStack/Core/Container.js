@@ -14,6 +14,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: ${({ direction }) => flexDirection(direction)};
   padding: 1em;
+  overflow-x: hidden;
 `
 Container.propTypes = {
   direction: PropTypes.oneOf(['top-down', 'down-top'])

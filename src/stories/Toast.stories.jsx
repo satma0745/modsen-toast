@@ -9,7 +9,7 @@ export default {
       <div
         style={{
           fontFamily: '"Helvetica", "Arial", sans-serif',
-          fontSize: '32px'
+          fontSize: '16px'
         }}
       >
         <Story />
