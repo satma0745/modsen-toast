@@ -3,28 +3,12 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
 import ToastStack from '../Core'
+
 import PositioningWrapper from './PositioningWrapper'
-
-const configureParentNodeStyling = (parentNode) => {
-  const oldPosition = parentNode.style.position
-  parentNode.style.position = 'relative'
-
-  const undo = () => {
-    parentNode.style.position = oldPosition
-  }
-  return undo
-}
-
-const stackDirection = (stackPosition) => {
-  return stackPosition.startsWith('top') ? 'top-down' : 'down-top'
-}
-
-const slidingSide = (stackPosition) => {
-  return stackPosition.split('-')[1]
-}
+import { styleParentNode, stackDirection, slidingSide } from './utils'
 
 const Toasts = ({ position, parentNode, ...props }) => {
-  useEffect(() => configureParentNodeStyling(parentNode), [parentNode])
+  useEffect(() => styleParentNode(parentNode), [parentNode])
 
   return ReactDOM.createPortal(
     <PositioningWrapper {...props} position={position}>
