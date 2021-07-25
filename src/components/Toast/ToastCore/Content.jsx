@@ -27,7 +27,7 @@ const Content = ({ icon: Icon, color, text, ...props }) => (
   </ContentWrapper>
 )
 Content.propTypes = {
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.func.isRequired,
   color: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired
 }

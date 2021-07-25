@@ -14,7 +14,7 @@ const ToastCore = ({ fgColor, bgColor, icon, text, dismiss, ...props }) => (
 ToastCore.propTypes = {
   fgColor: PropTypes.string.isRequired,
   bgColor: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
   dismiss: PropTypes.func.isRequired
 }
