@@ -1,16 +1,8 @@
 import React from 'react'
 import './styles.css'
 import { sendNotification } from '@data/notifications'
-import ToastsStack from '@components/ToastsStack'
 
-const Page = ({
-  position,
-  parentNode,
-  edgeDistance,
-  internalSpacing,
-  notificationLifetime,
-  ...props
-}) => (
+const Page = ({ children, ...props }) => (
   <section {...props}>
     <button
       type="button"
@@ -48,13 +40,7 @@ const Page = ({
       Send success notification
     </button>
 
-    <ToastsStack
-      position={position}
-      parentNode={parentNode}
-      edgeDistance={edgeDistance}
-      internalSpacing={internalSpacing}
-      notificationLifetime={notificationLifetime}
-    />
+    {children}
   </section>
 )
 export default Page
