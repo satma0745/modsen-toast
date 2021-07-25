@@ -6,9 +6,7 @@
       "@components": ["src/components"],
       "@components/*": ["src/components/*"],
       "@data": ["src/data"],
-      "@data/*": ["src/data/*"],
-      "@hooks": ["src/hooks"],
-      "@hooks/*": ["src/hooks/*"]
+      "@data/*": ["src/data/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

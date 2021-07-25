@@ -28,8 +28,7 @@ const config = [
       alias({
         entries: [
           { find: '@components', replacement: resolvePath('./src/components') },
-          { find: '@data', replacement: resolvePath('./src/data') },
-          { find: '@hooks', replacement: resolvePath('./src/hooks') }
+          { find: '@data', replacement: resolvePath('./src/data') }
         ]
       }),
       babel({

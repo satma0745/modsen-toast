@@ -1,5 +1,4 @@
 import React from 'react'
-import { NotificationContextProvider } from '@components/NotificationContext'
 import Page from './Page'
 
 export default {
@@ -14,13 +13,12 @@ export default {
 }
 
 export const Default = (props) => (
-  <NotificationContextProvider>
-    <Page parentNode={document.querySelector('#root')} {...props} />
-  </NotificationContextProvider>
+  <Page parentNode={document.querySelector('#root')} {...props} />
 )
 Default.storyName = 'NotificationsPage'
 Default.args = {
   position: 'top-right',
   edgeDistance: '2rem',
-  internalSpacing: '1rem'
+  internalSpacing: '1rem',
+  notificationLifetime: 7000
 }

@@ -1,11 +1,4 @@
 import ToastStack from '@components/ToastsStack'
-import { NotificationContextProvider } from '@components/NotificationContext'
-import { addNotification as sendNotification } from '@data/notificationStore'
-import useNotifications from '@hooks/useNotifications'
+import { sendNotification } from '@data/notifications'
 
-export {
-  ToastStack,
-  NotificationContextProvider,
-  sendNotification,
-  useNotifications
-}
+export { ToastStack, sendNotification }

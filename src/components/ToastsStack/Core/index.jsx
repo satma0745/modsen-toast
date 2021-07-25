@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import useNotifications from '@hooks/useNotifications'
-
 import Container from './Container'
 import AnimatedToasts from './AnimatedToasts'
+import useNotifications from './useNotifications'
 
 const ToastStack = ({
   toastsDirection,
@@ -12,9 +11,10 @@ const ToastStack = ({
   slideTo,
   internalSpacing,
   edgeDistance,
+  notificationLifetime,
   ...props
 }) => {
-  const [notifications] = useNotifications()
+  const notifications = useNotifications({ notificationLifetime })
 
   return (
     <Container
@@ -36,7 +36,11 @@ ToastStack.propTypes = {
   slideFrom: PropTypes.string.isRequired,
   slideTo: PropTypes.string.isRequired,
   internalSpacing: PropTypes.string.isRequired,
-  edgeDistance: PropTypes.string.isRequired
+  edgeDistance: PropTypes.string.isRequired,
+  notificationLifetime: PropTypes.number
+}
+ToastStack.defaultProps = {
+  notificationLifetime: undefined
 }
 
 export default ToastStack

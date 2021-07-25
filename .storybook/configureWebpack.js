@@ -9,8 +9,7 @@ const configureAliases = (config) => {
   config.resolve.alias = {
     ...config.resolve.alias,
     '@components': resolve('./src/components'),
-    '@data': resolve('./src/data'),
-    '@hooks': resolve('./src/hooks')
+    '@data': resolve('./src/data')
   }
 }
 

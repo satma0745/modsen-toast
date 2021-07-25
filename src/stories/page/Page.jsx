@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles.css'
-import { addNotification as send } from '@data/notificationStore'
+import { sendNotification } from '@data/notifications'
 import ToastsStack from '@components/ToastsStack'
 
 const Page = ({
@@ -8,27 +8,42 @@ const Page = ({
   parentNode,
   edgeDistance,
   internalSpacing,
+  notificationLifetime,
   ...props
 }) => (
   <section {...props}>
-    <button type="button" onClick={() => send('Info', 'Info toast example')}>
+    <button
+      type="button"
+      onClick={() =>
+        sendNotification({ type: 'Info', text: 'Info toast example' })
+      }
+    >
       Send info notification
     </button>
 
     <button
       type="button"
-      onClick={() => send('Warning', 'Warning toast example')}
+      onClick={() =>
+        sendNotification({ type: 'Warning', text: 'Warning toast example' })
+      }
     >
       Send warning notification
     </button>
 
-    <button type="button" onClick={() => send('Error', 'Error toast example')}>
+    <button
+      type="button"
+      onClick={() =>
+        sendNotification({ type: 'Error', text: 'Error toast example' })
+      }
+    >
       Send error notification
     </button>
 
     <button
       type="button"
-      onClick={() => send('Success', 'Success toast example')}
+      onClick={() =>
+        sendNotification({ type: 'Success', text: 'Success toast example' })
+      }
     >
       Send success notification
     </button>
@@ -38,6 +53,7 @@ const Page = ({
       parentNode={parentNode}
       edgeDistance={edgeDistance}
       internalSpacing={internalSpacing}
+      notificationLifetime={notificationLifetime}
     />
   </section>
 )
