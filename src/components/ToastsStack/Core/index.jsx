@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import useNotifications from '@data/useNotifications'
+import useNotifications from '@hooks/useNotifications'
 
 import Container from './Container'
 import AnimatedToasts from './AnimatedToasts'

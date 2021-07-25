@@ -1,5 +1,5 @@
 import React from 'react'
-import { NotificationContextProvider } from '@data/NotificationContext'
+import { NotificationContextProvider } from '@components/NotificationContext'
 import Page from './Page'
 
 export default {

@@ -1,13 +1,13 @@
-import React, { useState, useEffect, createContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import {
   addNotification,
   getNotifications,
   subscribe
-} from './notificationStore'
+} from '@data/notificationStore'
 
-const NotificationContext = createContext()
+import NotificationContext from './NotificationContext'
 
 const NotificationContextProvider = ({ stockNotifications, children }) => {
   const [notifications, setNotifications] = useState(getNotifications())
@@ -39,5 +39,4 @@ NotificationContextProvider.defaultProps = {
   stockNotifications: []
 }
 
-export default NotificationContext
-export { NotificationContextProvider }
+export default NotificationContextProvider

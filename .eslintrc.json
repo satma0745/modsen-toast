@@ -30,7 +30,8 @@
       "alias": {
         "map": [
           ["@components", "./src/components"],
-          ["@data", "./src/data"]
+          ["@data", "./src/data"],
+          ["@hooks", "./src/hooks"]
         ],
         "extensions": [".mjs", ".js", ".jsx", ".json", ".node"]
       }
