@@ -7,7 +7,7 @@ const ContentWrapper = styled.div`
   align-items: center;
 `
 
-const Icon = styled.img`
+const IconWrapper = styled.div`
   width: 2em;
   height: 2em;
 `
@@ -18,9 +18,11 @@ const Text = styled.p`
   margin-left: 1em;
 `
 
-const Content = ({ icon, color, text, ...props }) => (
+const Content = ({ icon: Icon, color, text, ...props }) => (
   <ContentWrapper {...props}>
-    <Icon src={icon} />
+    <IconWrapper>
+      <Icon />
+    </IconWrapper>
     <Text color={color}>{text}</Text>
   </ContentWrapper>
 )

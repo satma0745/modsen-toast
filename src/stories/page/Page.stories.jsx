@@ -1,7 +1,6 @@
 import React from 'react'
+import { NotificationContextProvider } from '@data/NotificationContext'
 import Page from './Page'
-
-import { NotificationContextProvider } from '../../data'
 
 export default {
   title: 'Example/NotificationsPage',

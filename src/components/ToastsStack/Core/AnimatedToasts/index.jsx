@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { animated } from 'react-spring'
 
-import Toast from '../../../Toast'
+import Toast from '@components/Toast'
+
 import useSlidingTransition from './useSlidingTransition'
 
 const AnimatedToast = animated(Toast)

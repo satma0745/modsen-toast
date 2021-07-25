@@ -5,19 +5,8 @@ const state = {
   subscribers: []
 }
 
-const addNotification = (type, text) => {
-  const notificationId = generateId()
-  const notification = {
-    id: notificationId,
-    type,
-    text,
-    dismiss: () => removeNotification(notificationId)
-  }
-
-  state.notifications = [...state.notifications, notification]
-  setTimeout(() => notification.dismiss(), 1000)
-
-  notifySubscribers()
+const notifySubscribers = () => {
+  state.subscribers.forEach((notify) => notify(state.notifications))
 }
 
 const removeNotification = (notificationId) => {
@@ -32,6 +21,21 @@ const getNotifications = () => {
   return state.notifications
 }
 
+const addNotification = (type, text) => {
+  const notificationId = generateId()
+  const notification = {
+    id: notificationId,
+    type,
+    text,
+    dismiss: () => removeNotification(notificationId)
+  }
+
+  state.notifications = [...state.notifications, notification]
+  // setTimeout(() => notification.dismiss(), 3000)
+
+  notifySubscribers()
+}
+
 const subscribe = (notify) => {
   state.subscribers.push(notify)
 
@@ -44,10 +48,6 @@ const subscribe = (notify) => {
     }
   }
   return unsubscribe
-}
-
-const notifySubscribers = () => {
-  state.subscribers.forEach((notify) => notify(state.notifications))
 }
 
 export { getNotifications, addNotification, subscribe }

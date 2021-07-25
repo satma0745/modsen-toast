@@ -1,4 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react'
+import PropTypes from 'prop-types'
+
 import {
   addNotification,
   getNotifications,
@@ -7,7 +9,7 @@ import {
 
 const NotificationContext = createContext()
 
-const NotificationContextProvider = ({ stockNotifications = [], children }) => {
+const NotificationContextProvider = ({ stockNotifications, children }) => {
   const [notifications, setNotifications] = useState(getNotifications())
   useEffect(() => subscribe(setNotifications), [setNotifications])
 
@@ -20,6 +22,21 @@ const NotificationContextProvider = ({ stockNotifications = [], children }) => {
       {children}
     </NotificationContext.Provider>
   )
+}
+NotificationContextProvider.propTypes = {
+  stockNotifications: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired
+    })
+  ),
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
+}
+NotificationContextProvider.defaultProps = {
+  stockNotifications: []
 }
 
 export default NotificationContext

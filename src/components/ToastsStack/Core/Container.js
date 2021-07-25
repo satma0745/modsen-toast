@@ -7,6 +7,8 @@ const flexDirection = (direction) => {
       return 'column'
     case 'down-top':
       return 'column-reverse'
+    default:
+      throw new Error('Unsupported direction option.')
   }
 }
 
@@ -16,6 +18,8 @@ const marginPlacement = (direction) => {
       return 'bottom'
     case 'down-top':
       return 'top'
+    default:
+      throw new Error('Unsupported direction option.')
   }
 }
 

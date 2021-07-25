@@ -8,6 +8,8 @@ const translateX = (side) => {
       return 'translateX(-150%)'
     case 'none':
       return 'translateX(0%)'
+    default:
+      throw new Error('Unsupported side option.')
   }
 }
 

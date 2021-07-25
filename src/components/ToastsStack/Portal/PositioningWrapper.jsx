@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const style = (position) => {
-  return position.split('-').reduce((style, side) => {
-    style[side] = 0
-    return style
+  return position.split('-').reduce((styles, side) => {
+    styles[side] = 0
+    return styles
   }, {})
 }
 

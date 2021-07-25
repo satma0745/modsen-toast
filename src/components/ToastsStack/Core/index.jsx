@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { useNotifications } from '../../../data'
+import useNotifications from '@data/useNotifications'
 
 import Container from './Container'
 import AnimatedToasts from './AnimatedToasts'
@@ -32,7 +32,7 @@ const ToastStack = ({
   )
 }
 ToastStack.propTypes = {
-  toastsDirection: PropTypes.oneOf(['top-down', 'down-top']),
+  toastsDirection: PropTypes.oneOf(['top-down', 'down-top']).isRequired,
   slideFrom: PropTypes.string.isRequired,
   slideTo: PropTypes.string.isRequired,
   internalSpacing: PropTypes.string.isRequired,
