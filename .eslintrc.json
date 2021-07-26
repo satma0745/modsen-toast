@@ -23,7 +23,8 @@
     "react/prop-types": "warn",
     "react/jsx-props-no-spreading": "off",
     "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
-    "no-param-reassign": "warn"
+    "no-param-reassign": "warn",
+    "lines-between-class-members": "off"
   },
   "settings": {
     "import/resolver": {

@@ -14,37 +14,32 @@ const storyConfiguration = {
   }
 }
 
-const SingleStackExample = (props) => (
+const Example = ({
+  position,
+  edgeDistance,
+  internalSpacing,
+  notificationLifetime,
+  ...props
+}) => (
   <Page>
-    <ToastsStack {...props} />
+    <ToastsStack
+      {...props}
+      preferences={{
+        position,
+        edgeDistance,
+        internalSpacing,
+        notificationLifetime
+      }}
+    />
   </Page>
 )
-SingleStackExample.args = {
+Example.storyName = 'NotificationsPage'
+Example.args = {
   position: 'top-right',
   edgeDistance: '2rem',
   internalSpacing: '1rem',
   notificationLifetime: 7000
 }
 
-const MultiStackExample = () => (
-  <Page>
-    <ToastsStack
-      parentNode={document.querySelector('#root')}
-      position="top-right"
-      edgeDistance="2rem"
-      internalSpacing="1rem"
-      notificationLifetime={7000}
-    />
-
-    <ToastsStack
-      parentNode={document.querySelector('#root')}
-      position="bottom-left"
-      edgeDistance="2rem"
-      internalSpacing="1rem"
-      notificationLifetime={3000}
-    />
-  </Page>
-)
-
 export default storyConfiguration
-export { SingleStackExample, MultiStackExample }
+export { Example }

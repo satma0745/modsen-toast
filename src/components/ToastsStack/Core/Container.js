@@ -1,22 +1,11 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const flexDirection = (direction) => {
-  switch (direction) {
-    case 'top-down':
-      return 'column'
-    case 'down-top':
-      return 'column-reverse'
-    default:
-      throw new Error('Unsupported direction option.')
-  }
-}
-
 const marginPlacement = (direction) => {
   switch (direction) {
-    case 'top-down':
+    case 'column':
       return 'bottom'
-    case 'down-top':
+    case 'column-reverse':
       return 'top'
     default:
       throw new Error('Unsupported direction option.')
@@ -28,7 +17,7 @@ const Container = styled.div`
   overflow-x: hidden;
 
   display: flex;
-  flex-direction: ${({ direction }) => flexDirection(direction)};
+  flex-direction: ${({ direction }) => direction};
 
   > * {
     margin-${({ direction }) => marginPlacement(direction)}:
@@ -40,7 +29,7 @@ const Container = styled.div`
   }
 `
 Container.propTypes = {
-  direction: PropTypes.oneOf(['top-down', 'down-top']),
+  direction: PropTypes.string.isRequired,
   internalSpacing: PropTypes.string.isRequired,
   edgeDistance: PropTypes.string.isRequired
 }

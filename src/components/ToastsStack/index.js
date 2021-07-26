@@ -1,3 +1,3 @@
-import ToastsStackPortal from './Portal'
+import ToastsStack from './ConfigurationWrapper'
 
-export default ToastsStackPortal
+export default ToastsStack

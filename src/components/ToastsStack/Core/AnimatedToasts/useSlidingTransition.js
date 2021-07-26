@@ -13,11 +13,11 @@ const translateX = (side) => {
   }
 }
 
-const useSlidingTransition = (notifications, slideFrom, slideTo) => {
+const useSlidingTransition = (notifications, side) => {
   return useTransition(notifications, {
-    from: { opacity: 0, transform: translateX(slideFrom) },
+    from: { opacity: 0, transform: translateX(side) },
     enter: { opacity: 1, transform: translateX('none') },
-    leave: { opacity: 0, transform: translateX(slideTo) }
+    leave: { opacity: 0, transform: translateX(side) }
   })
 }
 

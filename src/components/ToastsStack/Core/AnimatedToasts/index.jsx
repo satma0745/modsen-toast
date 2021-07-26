@@ -3,13 +3,15 @@ import PropTypes from 'prop-types'
 import { animated } from 'react-spring'
 
 import Toast from '@components/Toast'
+import { useConfiguration } from '@components/Configuration'
 
 import useSlidingTransition from './useSlidingTransition'
 
 const AnimatedToast = animated(Toast)
 
-const AnimatedToasts = ({ notifications, slideFrom, slideTo }) => {
-  const transitions = useSlidingTransition(notifications, slideFrom, slideTo)
+const AnimatedToasts = ({ notifications }) => {
+  const { slidingSide } = useConfiguration()
+  const transitions = useSlidingTransition(notifications, slidingSide)
 
   return transitions((style, { id, type, text, dismiss }) => (
     <AnimatedToast
@@ -29,9 +31,7 @@ AnimatedToasts.propTypes = {
       text: PropTypes.string,
       dismiss: PropTypes.func
     })
-  ).isRequired,
-  slideFrom: PropTypes.oneOf(['right', 'left']),
-  slideTo: PropTypes.oneOf(['right', 'left'])
+  ).isRequired
 }
 
 export default AnimatedToasts

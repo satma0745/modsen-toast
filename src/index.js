@@ -1,4 +1,4 @@
-import ToastStack from '@components/ToastsStack'
+import ToastsStack from '@components/ToastsStack'
 import { sendNotification } from '@data/notifications'
 
-export { ToastStack, sendNotification }
+export { ToastsStack, sendNotification }

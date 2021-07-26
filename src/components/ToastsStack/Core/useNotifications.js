@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
+
+import { useConfiguration } from '@components/Configuration'
 import { subscribeToNotifications } from '@data/notifications'
 
 const makeIdGenerator = () => {
@@ -11,7 +13,8 @@ const makeIdGenerator = () => {
   return generateId
 }
 
-const useNotifications = ({ notificationLifetime } = {}) => {
+const useNotifications = () => {
+  const { notificationLifetime } = useConfiguration()
   const [notifications, setNotifications] = useState([])
   const [generateId] = useState(makeIdGenerator)
 
