@@ -56,8 +56,4 @@ class Configuration {
   }
 }
 
-const configure = (preferences) => {
-  return new Configuration(preferences)
-}
-
-export default configure
+export default Configuration

@@ -42,5 +42,8 @@
   "scripts": {
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006"
+  },
+  "dependencies": {
+    "yup": "^0.32.9"
   }
 }
