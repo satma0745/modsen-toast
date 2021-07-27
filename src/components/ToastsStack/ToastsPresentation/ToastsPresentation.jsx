@@ -1,14 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { useConfiguration } from '@components/Configuration'
-
 import Container from './Container'
-import AnimatedToasts from './AnimatedToasts'
-import useNotifications from './useNotifications'
 
-const ToastStack = (props) => {
+const ToastsPresentation = ({ children, ...props }) => {
   const { internalSpacing, edgeDistance, direction } = useConfiguration()
-  const notifications = useNotifications()
 
   return (
     <Container
@@ -17,9 +14,15 @@ const ToastStack = (props) => {
       direction={direction}
       {...props}
     >
-      <AnimatedToasts notifications={notifications} />
+      {children}
     </Container>
   )
 }
+ToastsPresentation.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
+}
 
-export default ToastStack
+export default ToastsPresentation

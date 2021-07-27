@@ -2,17 +2,10 @@ import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
 import { useConfiguration } from '@components/Configuration'
-import ToastStack from '../Core'
 import PositioningWrapper from './PositioningWrapper'
 
-const Toasts = (props) => {
-  const {
-    parentNode,
-    position,
-    internalSpacing,
-    edgeDistance,
-    notificationLifetime
-  } = useConfiguration()
+const ToastsPortal = ({ children, ...props }) => {
+  const { parentNode, position } = useConfiguration()
 
   useEffect(() => {
     const oldPosition = parentNode.style.position
@@ -25,14 +18,10 @@ const Toasts = (props) => {
 
   return ReactDOM.createPortal(
     <PositioningWrapper {...props} position={position}>
-      <ToastStack
-        internalSpacing={internalSpacing}
-        edgeDistance={edgeDistance}
-        notificationLifetime={notificationLifetime}
-      />
+      {children}
     </PositioningWrapper>,
     parentNode
   )
 }
 
-export default Toasts
+export default ToastsPortal

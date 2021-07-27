@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ConfigurationWrapper from './ConfigurationWrapper'
+import PropTypes from 'prop-types'
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -12,12 +12,20 @@ class ErrorBoundary extends Component {
   }
 
   render() {
-    if (this.state.hasError) {
+    const { state, props } = this
+
+    if (state.hasError) {
       return <p>Toasts: Something went wrong 😢</p>
     }
 
-    return <ConfigurationWrapper {...this.props} />
+    return props.children
   }
+}
+ErrorBoundary.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 }
 
 export default ErrorBoundary

@@ -1,6 +1,6 @@
 import React from 'react'
-import './styles.css'
 import { sendNotification } from '@data/notifications'
+import './styles.css'
 
 const Page = ({ children, ...props }) => (
   <section {...props}>
