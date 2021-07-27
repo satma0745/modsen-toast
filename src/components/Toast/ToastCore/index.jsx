@@ -12,11 +12,16 @@ const ToastCore = ({ fgColor, bgColor, icon, text, dismiss, ...props }) => (
   </Surface>
 )
 ToastCore.propTypes = {
-  fgColor: PropTypes.string.isRequired,
-  bgColor: PropTypes.string.isRequired,
-  icon: PropTypes.func.isRequired,
+  fgColor: PropTypes.string,
+  bgColor: PropTypes.string,
+  icon: PropTypes.func,
   text: PropTypes.string.isRequired,
   dismiss: PropTypes.func.isRequired
+}
+ToastCore.defaultProps = {
+  fgColor: '#000',
+  bgColor: '#fff',
+  icon: undefined
 }
 
 export default ToastCore

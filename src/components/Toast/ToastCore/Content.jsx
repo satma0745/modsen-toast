@@ -20,16 +20,22 @@ const Text = styled.p`
 
 const Content = ({ icon: Icon, color, text, ...props }) => (
   <ContentWrapper {...props}>
-    <IconWrapper>
-      <Icon />
-    </IconWrapper>
+    {Icon && (
+      <IconWrapper>
+        <Icon />
+      </IconWrapper>
+    )}
+
     <Text color={color}>{text}</Text>
   </ContentWrapper>
 )
 Content.propTypes = {
-  icon: PropTypes.func.isRequired,
+  icon: PropTypes.func,
   color: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired
+}
+Content.defaultProps = {
+  icon: undefined
 }
 
 export default Content

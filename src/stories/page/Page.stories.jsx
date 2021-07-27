@@ -1,6 +1,8 @@
 import React from 'react'
 
 import ToastsStack from '@components/ToastsStack'
+
+import toastTypesConfig from '../toastTypesConfig'
 import Page from './Page'
 
 const storyConfiguration = {
@@ -28,17 +30,18 @@ const Example = ({
         position,
         edgeDistance,
         internalSpacing,
-        notificationLifetime
+        notificationLifetime,
+        toastTypesConfig
       }}
     />
   </Page>
 )
 Example.storyName = 'NotificationsPage'
 Example.args = {
-  position: 'top-left',
+  position: 'top-right',
   edgeDistance: '2rem',
   internalSpacing: '1rem',
-  notificationLifetime: 7000
+  notificationLifetime: 3000
 }
 
 export default storyConfiguration

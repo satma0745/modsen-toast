@@ -4,14 +4,17 @@ class Configuration {
   #edgeDistance = '2rem'
   #internalSpacing = '1rem'
   #notificationLifetime = 7000
+  #toastTypesConfig = {}
 
   constructor({
     position,
     parentNode,
     edgeDistance,
     internalSpacing,
-    notificationLifetime
+    notificationLifetime,
+    toastTypesConfig
   } = {}) {
+    this.#toastTypesConfig = toastTypesConfig ?? this.#toastTypesConfig
     this.#position = position ?? this.#position
     this.#parentNode = parentNode ?? this.#parentNode
     this.#edgeDistance = edgeDistance ?? this.#edgeDistance
@@ -53,6 +56,10 @@ class Configuration {
 
   get notificationLifetime() {
     return this.#notificationLifetime
+  }
+
+  get toastTypesConfig() {
+    return this.#toastTypesConfig
   }
 }
 

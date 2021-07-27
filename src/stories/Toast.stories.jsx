@@ -1,5 +1,9 @@
 import React from 'react'
+
+import { ConfigurationProvider } from '@components/Configuration'
 import Toast from '@components/Toast'
+
+import toastTypesConfig from './toastTypesConfig'
 
 export default {
   title: 'Components/Toast',
@@ -12,7 +16,9 @@ export default {
           fontSize: '16px'
         }}
       >
-        <Story />
+        <ConfigurationProvider preferences={{ toastTypesConfig }}>
+          <Story />
+        </ConfigurationProvider>
       </div>
     )
   ]

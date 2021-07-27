@@ -3,7 +3,7 @@ import InfoIcon from './assets/info.svg'
 import SuccessIcon from './assets/success.svg'
 import WarningIcon from './assets/warning.svg'
 
-const toastTypesConfig = {
+const config = {
   Error: {
     fgColor: '#fff',
     bgColor: '#E25837',
@@ -26,8 +26,4 @@ const toastTypesConfig = {
   }
 }
 
-const toastTypeConfig = (toastType) => {
-  return toastTypesConfig[toastType]
-}
-
-export default toastTypeConfig
+export default config

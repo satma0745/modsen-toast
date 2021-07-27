@@ -10,7 +10,8 @@ const schema = object().shape({
   parentNode: object(),
   edgeDistance: string(),
   internalDistance: string(),
-  notificationLifetime: number()
+  notificationLifetime: number(),
+  toastTypesConfig: object()
 })
 
 const validate = (preferences) => {

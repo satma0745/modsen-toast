@@ -1,24 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { useConfiguration } from '@components/Configuration'
 import ToastCore from './ToastCore'
-import toastTypeConfig from './toastTypeConfig'
 
-const Toast = ({ type, text, dismiss, ...props }) => (
-  <ToastCore
-    {...props}
-    {...toastTypeConfig(type)}
-    text={text}
-    dismiss={dismiss}
-  />
-)
+const Toast = ({ type, text, dismiss, ...props }) => {
+  const { toastTypesConfig } = useConfiguration()
+
+  return (
+    <ToastCore
+      {...props}
+      {...toastTypesConfig[type]}
+      text={text}
+      dismiss={dismiss}
+    />
+  )
+}
 Toast.propTypes = {
-  type: PropTypes.oneOf(['Error', 'Info', 'Success', 'Warning']),
+  type: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   dismiss: PropTypes.func.isRequired
-}
-Toast.defaultProps = {
-  type: 'Info'
 }
 
 export default Toast
