@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import DismissIcon from '../assets/dismiss.svg'
+import DismissIcon from './assets/dismiss.svg'
 
 const DismissButtonBody = styled.div`
   position: absolute;
