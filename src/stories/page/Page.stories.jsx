@@ -35,7 +35,7 @@ const Example = ({
 )
 Example.storyName = 'NotificationsPage'
 Example.args = {
-  position: 'top-right',
+  position: 'top-left',
   edgeDistance: '2rem',
   internalSpacing: '1rem',
   notificationLifetime: 7000

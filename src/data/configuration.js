@@ -5,7 +5,7 @@ class Configuration {
   #internalSpacing = '1rem'
   #notificationLifetime = 7000
 
-  configure({
+  constructor({
     position,
     parentNode,
     edgeDistance,
@@ -32,8 +32,10 @@ class Configuration {
     switch (this.#position.split('-')[0]) {
       case 'top':
         return 'column'
-      case 'botoom':
+      case 'bottom':
         return 'column-reverse'
+      default:
+        throw new Error('Unsupported position option.')
     }
   }
 
@@ -54,14 +56,8 @@ class Configuration {
   }
 }
 
-let configuration
 const configure = (preferences) => {
-  if (!configuration) {
-    configuration = new Configuration()
-  }
-
-  configuration.configure(preferences)
-  return configuration
+  return new Configuration(preferences)
 }
 
 export default configure
