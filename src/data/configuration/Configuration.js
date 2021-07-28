@@ -23,23 +23,12 @@ class Configuration {
       notificationLifetime ?? this.#notificationLifetime
   }
 
-  get position() {
-    return this.#position
+  get verticalPosition() {
+    return this.#position.split('-')[0]
   }
 
-  get slidingSide() {
+  get horizontalPosition() {
     return this.#position.split('-')[1]
-  }
-
-  get direction() {
-    switch (this.#position.split('-')[0]) {
-      case 'top':
-        return 'column'
-      case 'bottom':
-        return 'column-reverse'
-      default:
-        throw new Error('Unsupported position option.')
-    }
   }
 
   get parentNode() {

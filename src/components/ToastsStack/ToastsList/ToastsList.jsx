@@ -1,48 +1,56 @@
 import React from 'react'
-import { animated, useTransition } from 'react-spring'
+import { to, useTransition } from 'react-spring'
 
-import Toast from '@components/Toast'
 import { useConfiguration } from '@components/Configuration'
 
 import useNotifications from './useNotifications'
-
-const direction = (side) => {
-  switch (side) {
-    case 'right':
-      return 1
-    case 'left':
-      return -1
-    default:
-      throw new Error('Unsupported side option.')
-  }
-}
-
-const AnimatedToast = animated(Toast)
+import useDirections from './useDirections'
+import AnimatedToast from './AnimatedToast'
 
 const ToastsList = () => {
   const notifications = useNotifications()
+  const { internalSpacing } = useConfiguration()
+  const [xDir, yDir] = useDirections()
 
-  const { slidingSide } = useConfiguration()
-  const dir = direction(slidingSide)
+  const height = `6em`
 
-  const transitions = useTransition(notifications, {
-    from: { opacity: 0, x: 1 },
-    enter: { opacity: 1, x: 0 },
-    leave: { opacity: 0, x: 1 }
-  })
+  const transitions = useTransition(
+    notifications.map((notification, index) => ({
+      ...notification,
+      yOffset: `calc(${
+        yDir * index
+      } * (${height} + ${internalSpacing}) + ${Math.min(yDir * 100, 0)}%)`
+    })),
+    {
+      from: { position: 'absolute', opacity: 0, xOffset: 1 },
+      enter: ({ yOffset }) => ({ opacity: 1, xOffset: 0, yOffset }),
+      update: ({ yOffset }) => ({ yOffset }),
+      leave: { opacity: 0, xOffset: 1, height: 0 },
+      keys: (notification) => notification.id
+    }
+  )
 
-  return transitions(({ x, ...style }, { id, type, text, dismiss }) => (
-    <AnimatedToast
-      key={id}
-      style={{
-        transform: x.to((v) => `translateX(calc(${v * dir} * 150%))`),
-        ...style
-      }}
-      type={type}
-      text={text}
-      dismiss={() => dismiss()}
-    />
-  ))
+  return transitions(
+    ({ xOffset, yOffset, ...style }, { id, type, text, dismiss }) => (
+      <AnimatedToast
+        key={id}
+        style={{
+          transform: to(
+            [xOffset, yOffset],
+            (x, y) =>
+              `translate3d(calc(${x * xDir} * 150% - ${Math.max(
+                xDir * 100,
+                0
+              )}%), ${y}, 0)`
+          ),
+          ...style
+        }}
+        type={type}
+        text={text}
+        dismiss={() => dismiss()}
+      />
+    )
+  )
 }
 
 export default ToastsList

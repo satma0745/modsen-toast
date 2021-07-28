@@ -5,7 +5,7 @@ import { useConfiguration } from '@components/Configuration'
 import PositioningWrapper from './PositioningWrapper'
 
 const ToastsPortal = ({ children, ...props }) => {
-  const { parentNode, position } = useConfiguration()
+  const { parentNode } = useConfiguration()
 
   useEffect(() => {
     const oldPosition = parentNode.style.position
@@ -17,9 +17,7 @@ const ToastsPortal = ({ children, ...props }) => {
   }, [parentNode])
 
   return ReactDOM.createPortal(
-    <PositioningWrapper {...props} position={position}>
-      {children}
-    </PositioningWrapper>,
+    <PositioningWrapper {...props}>{children}</PositioningWrapper>,
     parentNode
   )
 }
