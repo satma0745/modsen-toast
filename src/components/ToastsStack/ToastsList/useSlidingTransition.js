@@ -1,23 +1,23 @@
 import { useTransition } from 'react-spring'
 
-const translateX = (side) => {
+const getDirection = (side) => {
   switch (side) {
     case 'right':
-      return 'translateX(150%)'
+      return 1
     case 'left':
-      return 'translateX(-150%)'
-    case 'none':
-      return 'translateX(0%)'
+      return -1
     default:
       throw new Error('Unsupported side option.')
   }
 }
 
 const useSlidingTransition = (notifications, side) => {
+  const direction = getDirection(side)
+
   return useTransition(notifications, {
-    from: { opacity: 0, transform: translateX(side) },
-    enter: { opacity: 1, transform: translateX('none') },
-    leave: { opacity: 0, transform: translateX(side) }
+    from: { opacity: 0, transform: `translateX(${150 * direction}%)` },
+    enter: { opacity: 1, transform: 'translateX(0%)' },
+    leave: { opacity: 0, transform: `translateX(${150 * direction}%)` }
   })
 }
 
