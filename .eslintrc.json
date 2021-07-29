@@ -30,6 +30,7 @@
     "import/resolver": {
       "alias": {
         "map": [
+          ["@animations", "./src/components/animations"],
           ["@components", "./src/components"],
           ["@data", "./src/data"]
         ],

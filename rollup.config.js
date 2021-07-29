@@ -27,6 +27,10 @@ const config = [
       svgr(),
       alias({
         entries: [
+          {
+            find: '@animations',
+            replacement: resolvePath('./src/components/animations')
+          },
           { find: '@components', replacement: resolvePath('./src/components') },
           { find: '@data', replacement: resolvePath('./src/data') }
         ]
