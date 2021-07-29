@@ -4,7 +4,7 @@ import { to, useTransition } from 'react-spring'
 import { useConfiguration } from '@components/Configuration'
 import useTranslate3d from './useTranslate3d'
 
-const useSlidingAnimation = (elements, elementKeySelector, elementHeight) => {
+const useSlideAnimation = (elements, elementKeySelector, elementHeight) => {
   const { internalSpacing } = useConfiguration()
   const height = `calc(${elementHeight} + ${internalSpacing})`
   const translate3d = useTranslate3d(height)
@@ -12,10 +12,10 @@ const useSlidingAnimation = (elements, elementKeySelector, elementHeight) => {
   const transitions = useTransition(
     elements.map((element, index) => ({ ...element, index })),
     {
-      from: { position: 'absolute', opacity: 0, xOffset: 1 },
-      enter: ({ index }) => ({ opacity: 1, xOffset: 0, index }),
+      from: { position: 'absolute', xOffset: 1 },
+      enter: ({ index }) => ({ xOffset: 0, index }),
       update: ({ index }) => ({ index }),
-      leave: { opacity: 0, xOffset: 1, height: 0 },
+      leave: { xOffset: 1 },
       keys: elementKeySelector
     }
   )
@@ -32,4 +32,4 @@ const useSlidingAnimation = (elements, elementKeySelector, elementHeight) => {
   }
 }
 
-export default useSlidingAnimation
+export default useSlideAnimation
