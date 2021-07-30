@@ -1,5 +1,6 @@
 import fadeTransition from './fade'
 import slideTransition from './slide'
+import zoomTransition from './zoom'
 
 import getDirections from './directions'
 
@@ -9,6 +10,8 @@ const selectTransition = ({ transition }) => {
       return fadeTransition
     case 'slide':
       return slideTransition
+    case 'zoom':
+      return zoomTransition
     default:
       throw new Error('Unsupported transition option.')
   }

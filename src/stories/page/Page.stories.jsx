@@ -14,7 +14,7 @@ const storyConfiguration = {
       control: { type: 'select' }
     },
     transition: {
-      options: ['slide', 'fade'],
+      options: ['slide', 'fade', 'zoom'],
       control: { type: 'select' }
     }
   }
