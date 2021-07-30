@@ -1,10 +1,11 @@
 class Configuration {
-  #position = 'top-right'
-  #parentNode = document.querySelector('#root')
-  #edgeDistance = '2rem'
-  #internalSpacing = '1rem'
-  #notificationLifetime = 7000
-  #toastTypesConfig = {}
+  #position
+  #parentNode
+  #edgeDistance
+  #internalSpacing
+  #notificationLifetime
+  #transition
+  #toastTypesConfig
 
   constructor({
     position,
@@ -12,15 +13,16 @@ class Configuration {
     edgeDistance,
     internalSpacing,
     notificationLifetime,
+    transition,
     toastTypesConfig
   } = {}) {
-    this.#toastTypesConfig = toastTypesConfig ?? this.#toastTypesConfig
-    this.#position = position ?? this.#position
-    this.#parentNode = parentNode ?? this.#parentNode
-    this.#edgeDistance = edgeDistance ?? this.#edgeDistance
-    this.#internalSpacing = internalSpacing ?? this.#internalSpacing
-    this.#notificationLifetime =
-      notificationLifetime ?? this.#notificationLifetime
+    this.#toastTypesConfig = toastTypesConfig
+    this.#position = position
+    this.#parentNode = parentNode
+    this.#edgeDistance = edgeDistance
+    this.#internalSpacing = internalSpacing
+    this.#transition = transition
+    this.#notificationLifetime = notificationLifetime
   }
 
   get verticalPosition() {
@@ -32,7 +34,7 @@ class Configuration {
   }
 
   get parentNode() {
-    return this.#parentNode
+    return this.#parentNode()
   }
 
   get edgeDistance() {
@@ -45,6 +47,10 @@ class Configuration {
 
   get notificationLifetime() {
     return this.#notificationLifetime
+  }
+
+  get transition() {
+    return this.#transition
   }
 
   get toastTypesConfig() {

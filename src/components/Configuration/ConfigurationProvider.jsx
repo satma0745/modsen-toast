@@ -5,7 +5,7 @@ import configure from '@data/configuration'
 import ConfigurationContext from './ConfigurationContext'
 
 const ConfigurationProvider = ({ preferences, children }) => {
-  const [configuration, setConfiguration] = useState(configure())
+  const [configuration, setConfiguration] = useState(configure(preferences))
 
   useEffect(() => {
     setConfiguration(configure(preferences))
@@ -24,19 +24,16 @@ ConfigurationProvider.propTypes = {
       'bottom-right',
       'bottom-left',
       'top-left'
-    ]),
-    parentNode: PropTypes.instanceOf(Element),
-    edgeDistance: PropTypes.string,
-    internalSpacing: PropTypes.string,
-    notificationLifetime: PropTypes.number
-  }),
+    ]).isRequired,
+    parentNode: PropTypes.func.isRequired,
+    edgeDistance: PropTypes.string.isRequired,
+    internalSpacing: PropTypes.string.isRequired,
+    notificationLifetime: PropTypes.number.isRequired
+  }).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired
-}
-ConfigurationProvider.defaultProps = {
-  preferences: {}
 }
 
 export default ConfigurationProvider

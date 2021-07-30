@@ -3,8 +3,8 @@
     "baseUrl": "./",
     "jsx": "react",
     "paths": {
-      "@animations": ["src/components/animations"],
-      "@animations/*": ["src/components/animations/*"],
+      "@transition": ["src/components/transition"],
+      "@transition/*": ["src/components/transition/*"],
       "@components": ["src/components"],
       "@components/*": ["src/components/*"],
       "@data": ["src/data"],

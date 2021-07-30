@@ -57,7 +57,7 @@ const useNotifications = () => {
           }, notificationLifetime)
         }
       }),
-    [addNotification, removeNotification, notificationLifetime]
+    [addNotification, removeNotification, notificationLifetime, generateId]
   )
 
   return notifications

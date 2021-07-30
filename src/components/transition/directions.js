@@ -1,5 +1,3 @@
-import { useConfiguration } from '@components/Configuration'
-
 const horizontalDirection = (horizontalPosition) => {
   switch (horizontalPosition) {
     case 'right':
@@ -22,13 +20,11 @@ const verticalDirection = (verticalPosition) => {
   }
 }
 
-const useDirections = () => {
-  const { horizontalPosition, verticalPosition } = useConfiguration()
-
-  const xDir = horizontalDirection(horizontalPosition)
-  const yDir = verticalDirection(verticalPosition)
-
-  return [xDir, yDir]
+const directions = ({ horizontalPosition, verticalPosition }) => {
+  return [
+    horizontalDirection(horizontalPosition),
+    verticalDirection(verticalPosition)
+  ]
 }
 
-export default useDirections
+export default directions

@@ -17,10 +17,7 @@ const ToastsStack = ({ preferences, ...props }) => (
   </ErrorBoundary>
 )
 ToastsStack.propTypes = {
-  preferences: PropTypes.object
-}
-ToastsStack.defaultProps = {
-  preferences: {}
+  preferences: PropTypes.object.isRequired
 }
 
 export default ToastsStack

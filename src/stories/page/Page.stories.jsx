@@ -12,6 +12,10 @@ const storyConfiguration = {
     position: {
       options: ['top-right', 'bottom-right', 'bottom-left', 'top-left'],
       control: { type: 'select' }
+    },
+    transition: {
+      options: ['slide'],
+      control: { type: 'select' }
     }
   }
 }
@@ -20,6 +24,7 @@ const Example = ({
   position,
   edgeDistance,
   internalSpacing,
+  transition,
   notificationLifetime,
   ...props
 }) => (
@@ -31,7 +36,9 @@ const Example = ({
         edgeDistance,
         internalSpacing,
         notificationLifetime,
-        toastTypesConfig
+        transition,
+        toastTypesConfig,
+        parentNode: () => document.querySelector('#root')
       }}
     />
   </Page>
@@ -41,7 +48,8 @@ Example.args = {
   position: 'top-right',
   edgeDistance: '2rem',
   internalSpacing: '1rem',
-  notificationLifetime: 3000
+  notificationLifetime: 3000,
+  transition: 'slide'
 }
 
 export default storyConfiguration

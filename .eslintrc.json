@@ -5,6 +5,7 @@
   },
   "extends": [
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "airbnb",
     "plugin:prettier/recommended"
   ],
@@ -30,7 +31,7 @@
     "import/resolver": {
       "alias": {
         "map": [
-          ["@animations", "./src/components/animations"],
+          ["@transition", "./src/components/transition"],
           ["@components", "./src/components"],
           ["@data", "./src/data"]
         ],

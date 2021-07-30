@@ -2,7 +2,7 @@ import React from 'react'
 import { animated } from 'react-spring'
 
 import Toast from '@components/Toast'
-import useSlideAnimation from '@animations/slide'
+import useTransition from '@transition'
 
 import useNotifications from './useNotifications'
 
@@ -16,9 +16,9 @@ const AnimatedToast = animated(
 
 const ToastsList = () => {
   const notifications = useNotifications()
-  const animation = useSlideAnimation(notifications, ({ id }) => id, '6em')
+  const transition = useTransition(notifications, ({ id }) => id)
 
-  return animation(AnimatedToast)
+  return transition(AnimatedToast)
 }
 
 export default ToastsList

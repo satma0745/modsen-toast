@@ -28,8 +28,8 @@ const config = [
       alias({
         entries: [
           {
-            find: '@animations',
-            replacement: resolvePath('./src/components/animations')
+            find: '@transition',
+            replacement: resolvePath('./src/components/transition')
           },
           { find: '@components', replacement: resolvePath('./src/components') },
           { find: '@data', replacement: resolvePath('./src/data') }
