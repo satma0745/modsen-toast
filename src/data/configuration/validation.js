@@ -8,7 +8,7 @@ const schema = object().shape({
   edgeDistance: string().required(),
   internalSpacing: string().required(),
   notificationLifetime: number().required(),
-  transition: string().oneOf(['slide']).required(),
+  transition: string().oneOf(['slide', 'fade']).required(),
   toastTypesConfig: object().required()
 })
 
