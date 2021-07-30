@@ -37,7 +37,13 @@ const useToastTransition = (elements, elementKeySelector) => {
 
   return (Component) => {
     return transitions((style, payload) => (
-      <Component style={generateStyle(style)} payload={payload} />
+      <Component
+        style={generateStyle(style)}
+        toastProps={{
+          ...payload,
+          toastTypesConfig: configuration.toastTypesConfig
+        }}
+      />
     ))
   }
 }
