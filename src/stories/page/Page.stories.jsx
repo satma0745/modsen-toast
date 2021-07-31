@@ -37,18 +37,17 @@ const Example = ({
         internalSpacing,
         notificationLifetime,
         transition,
-        toastTypesConfig,
-        parentNode: () => document.querySelector('#root')
+        toastTypesConfig
       }}
     />
   </Page>
 )
 Example.storyName = 'NotificationsPage'
 Example.args = {
-  position: 'top-right',
   edgeDistance: '2rem',
   internalSpacing: '1rem',
   notificationLifetime: 3000,
+  position: 'top-left',
   transition: 'slide'
 }
 
