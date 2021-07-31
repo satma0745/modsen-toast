@@ -44,6 +44,7 @@
   },
   "scripts": {
     "lint": "npx eslint src --ext .js --ext .jsx",
+    "cy": "npx cypress open",
     "build": "yarn lint && rollup -c",
     "storybook": "yarn lint && start-storybook -p 6006"
   }
