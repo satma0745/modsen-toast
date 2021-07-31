@@ -12,6 +12,7 @@ const ConfigurationProvider = ({
   notificationLifetime,
   transition,
   toastTypesConfig,
+  limit,
   children
 }) => {
   const preferences = useMemo(
@@ -22,7 +23,8 @@ const ConfigurationProvider = ({
       internalSpacing,
       notificationLifetime,
       transition,
-      toastTypesConfig
+      toastTypesConfig,
+      limit
     }),
     [
       position,
@@ -31,7 +33,8 @@ const ConfigurationProvider = ({
       internalSpacing,
       notificationLifetime,
       transition,
-      toastTypesConfig
+      toastTypesConfig,
+      limit
     ]
   )
 
@@ -57,6 +60,7 @@ ConfigurationProvider.propTypes = {
   notificationLifetime: PropTypes.number,
   transition: PropTypes.string,
   toastTypesConfig: PropTypes.object,
+  limit: PropTypes.number,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
@@ -69,7 +73,8 @@ ConfigurationProvider.defaultProps = {
   internalSpacing: '1rem',
   notificationLifetime: 3000,
   transition: 'slide',
-  toastTypesConfig: {}
+  toastTypesConfig: {},
+  limit: 3
 }
 
 export default ConfigurationProvider

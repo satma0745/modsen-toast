@@ -9,7 +9,8 @@ const schema = object().shape({
   internalSpacing: string().required(),
   notificationLifetime: number().required(),
   transition: string().oneOf(['slide', 'fade', 'zoom']).required(),
-  toastTypesConfig: object().required()
+  toastTypesConfig: object().required(),
+  limit: number().required()
 })
 
 const validate = (preferences) => {

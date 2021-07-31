@@ -6,6 +6,7 @@ class Configuration {
   #notificationLifetime
   #transition
   #toastTypesConfig
+  #limit
 
   constructor({
     position,
@@ -14,7 +15,8 @@ class Configuration {
     internalSpacing,
     notificationLifetime,
     transition,
-    toastTypesConfig
+    toastTypesConfig,
+    limit
   } = {}) {
     this.#toastTypesConfig = toastTypesConfig
     this.#position = position
@@ -23,6 +25,7 @@ class Configuration {
     this.#internalSpacing = internalSpacing
     this.#transition = transition
     this.#notificationLifetime = notificationLifetime
+    this.#limit = limit
   }
 
   get verticalPosition() {
@@ -55,6 +58,10 @@ class Configuration {
 
   get toastTypesConfig() {
     return this.#toastTypesConfig
+  }
+
+  get limit() {
+    return this.#limit
   }
 }
 

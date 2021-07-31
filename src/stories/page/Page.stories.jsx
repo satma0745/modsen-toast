@@ -26,6 +26,7 @@ const Example = ({
   internalSpacing,
   transition,
   notificationLifetime,
+  limit,
   ...props
 }) => (
   <Page>
@@ -37,7 +38,8 @@ const Example = ({
         internalSpacing,
         notificationLifetime,
         transition,
-        toastTypesConfig
+        toastTypesConfig,
+        limit
       }}
     />
   </Page>
@@ -48,7 +50,8 @@ Example.args = {
   internalSpacing: '1rem',
   notificationLifetime: 3000,
   position: 'top-left',
-  transition: 'slide'
+  transition: 'slide',
+  limit: 3
 }
 
 export default storyConfiguration

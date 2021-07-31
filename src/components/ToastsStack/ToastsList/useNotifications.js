@@ -1,64 +1,54 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 
 import { useConfiguration } from '@components/Configuration'
 import { subscribeToNotifications } from '@data/notifications'
 
-const makeIdGenerator = () => {
-  let nextId = 1
-  const generateId = () => {
-    const id = nextId
-    nextId += 1
-    return id
-  }
-  return generateId
-}
+import create from './createNotification'
+import useList from './useList'
+import useQueue from './useQueue'
 
 const useNotifications = () => {
-  const { notificationLifetime } = useConfiguration()
-  const [notifications, setNotifications] = useState([])
-  const [generateId] = useState(makeIdGenerator)
+  const [notifications, show, hide] = useList((notification) => notification.id)
+  const [enqueue, dequeue] = useQueue()
 
-  const addNotification = useCallback(
+  const { notificationLifetime, limit } = useConfiguration()
+
+  const display = useCallback(
     (notification) => {
-      setNotifications((oldNotifications) => [
-        ...oldNotifications,
-        notification
-      ])
-    },
-    [setNotifications]
-  )
+      const dismiss = () => hide(notification.id)
 
-  const removeNotification = useCallback(
-    (notificationId) => {
-      setNotifications((oldNotifications) =>
-        oldNotifications.filter(({ id }) => id !== notificationId)
-      )
+      show({ ...notification, dismiss })
+
+      if (notificationLifetime) {
+        setTimeout(dismiss, notificationLifetime)
+      }
     },
-    [setNotifications]
+    [show, hide, notificationLifetime]
   )
 
   useEffect(
     () =>
-      subscribeToNotifications((newNotification) => {
-        const id = generateId()
-        const notification = {
-          ...newNotification,
-          id,
-          dismiss: () => {
-            removeNotification(id)
-          }
-        }
+      subscribeToNotifications((payload) => {
+        const notification = create(payload)
 
-        addNotification(notification)
-
-        if (notificationLifetime) {
-          setTimeout(() => {
-            removeNotification(notification.id)
-          }, notificationLifetime)
+        if (limit && notifications.length >= limit) {
+          enqueue(notification)
+        } else {
+          display(notification)
         }
       }),
-    [addNotification, removeNotification, notificationLifetime, generateId]
+    [display, enqueue, limit, notifications.length]
   )
+
+  useEffect(() => {
+    if (limit && notifications.length < limit) {
+      const notification = dequeue()
+
+      if (notification) {
+        display(notification)
+      }
+    }
+  }, [dequeue, display, limit, notifications.length])
 
   return notifications
 }

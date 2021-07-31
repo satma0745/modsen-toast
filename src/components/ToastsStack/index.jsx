@@ -7,28 +7,9 @@ import ToastsList from './ToastsList'
 import ToastsPortal from './ToastsPortal'
 import ErrorBoundary from './ErrorBoundary'
 
-const ToastsStack = ({
-  preferences: {
-    position,
-    parentNode,
-    edgeDistance,
-    internalSpacing,
-    notificationLifetime,
-    transition,
-    toastTypesConfig
-  },
-  ...props
-}) => (
+const ToastsStack = ({ preferences, ...props }) => (
   <ErrorBoundary>
-    <ConfigurationProvider
-      position={position}
-      parentNode={parentNode}
-      edgeDistance={edgeDistance}
-      internalSpacing={internalSpacing}
-      notificationLifetime={notificationLifetime}
-      transition={transition}
-      toastTypesConfig={toastTypesConfig}
-    >
+    <ConfigurationProvider {...preferences}>
       <ToastsPortal {...props}>
         <ToastsList />
       </ToastsPortal>
