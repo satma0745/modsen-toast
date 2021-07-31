@@ -12,6 +12,7 @@
     "@svgr/webpack": "^5.5.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
+    "cypress": "^8.1.0",
     "eslint": "^7.31.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
