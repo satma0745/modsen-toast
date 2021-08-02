@@ -12,12 +12,10 @@
     "@svgr/webpack": "^5.5.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "cypress": "^8.1.0",
     "eslint": "^7.31.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.0",
@@ -45,7 +43,6 @@
   },
   "scripts": {
     "lint": "npx eslint src --ext .js --ext .jsx",
-    "cy": "npx cypress open",
     "build": "yarn lint && rollup -c",
     "storybook": "yarn lint && start-storybook -p 6006"
   }

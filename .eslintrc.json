@@ -7,8 +7,7 @@
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "airbnb",
-    "plugin:prettier/recommended",
-    "plugin:cypress/recommended"
+    "plugin:prettier/recommended"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -18,7 +17,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier", "cypress"],
+  "plugins": ["react", "prettier"],
   "rules": {
     "prettier/prettier": "error",
     "import/prefer-default-export": "off",
