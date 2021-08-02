@@ -6,28 +6,34 @@ const Page = ({ children, ...props }) => (
   <section {...props}>
     <button
       type="button"
-      onClick={() => sendNotification('Info', 'Info toast example')}
+      onClick={() => sendNotification('Info', 'Info', 'Info toast example')}
     >
       Send info notification
     </button>
 
     <button
       type="button"
-      onClick={() => sendNotification('Warning', 'Warning toast example')}
+      onClick={() =>
+        sendNotification('Warning', 'Warning', 'Info toast example')
+      }
     >
       Send warning notification
     </button>
 
     <button
       type="button"
-      onClick={() => sendNotification('Error', 'Error toast example')}
+      onClick={() =>
+        sendNotification('Error', 'Error ocurred', 'Info toast example')
+      }
     >
       Send error notification
     </button>
 
     <button
       type="button"
-      onClick={() => sendNotification('Success', 'Success toast example')}
+      onClick={() =>
+        sendNotification('Success', 'Operation success', 'Info toast example')
+      }
     >
       Send success notification
     </button>

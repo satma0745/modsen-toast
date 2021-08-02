@@ -12,8 +12,8 @@ const subscribeToNotifications = (notifyCallback) => {
   return unsubscribe
 }
 
-const sendNotification = (type, text) => {
-  subscribers.forEach((notify) => notify({ type, text }))
+const sendNotification = (type, title, message) => {
+  subscribers.forEach((notify) => notify({ type, title, message }))
 }
 
 export { sendNotification, subscribeToNotifications }

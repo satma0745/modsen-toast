@@ -10,20 +10,28 @@ const defaultToastConfig = {
   bgColor: '#fff'
 }
 
-const ToastCore = ({ type, text, dismiss, toastTypesConfig, ...props }) => {
+const ToastCore = ({
+  type,
+  title,
+  message,
+  dismiss,
+  toastTypesConfig,
+  ...props
+}) => {
   const toastTypeConfig = toastTypesConfig[type]
   const { fgColor, bgColor, icon } = toastTypeConfig ?? defaultToastConfig
 
   return (
     <Surface color={bgColor} {...props}>
-      <Content icon={icon} color={fgColor} text={text} />
+      <Content icon={icon} color={fgColor} title={title} message={message} />
       <DismissButton color={fgColor} onClick={() => dismiss()} />
     </Surface>
   )
 }
 ToastCore.propTypes = {
   type: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   dismiss: PropTypes.func.isRequired,
   toastTypesConfig: PropTypes.object.isRequired
 }

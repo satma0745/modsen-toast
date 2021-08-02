@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
+import Description from './Description'
+
 const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -12,13 +14,7 @@ const IconWrapper = styled.div`
   height: 2em;
 `
 
-const Text = styled.p`
-  line-height: 1.2em;
-  color: ${({ color }) => color};
-  margin-left: 1em;
-`
-
-const Content = ({ icon: Icon, color, text, ...props }) => (
+const Content = ({ icon: Icon, color, title, message, ...props }) => (
   <ContentWrapper {...props}>
     {Icon && (
       <IconWrapper>
@@ -26,13 +22,14 @@ const Content = ({ icon: Icon, color, text, ...props }) => (
       </IconWrapper>
     )}
 
-    <Text color={color}>{text}</Text>
+    <Description color={color} title={title} message={message} />
   </ContentWrapper>
 )
 Content.propTypes = {
   icon: PropTypes.func,
   color: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 }
 Content.defaultProps = {
   icon: undefined

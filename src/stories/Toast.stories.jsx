@@ -27,23 +27,27 @@ const Template = (args) => (
 export const Info = Template.bind({})
 Info.args = {
   type: 'Info',
-  text: 'Info toast example'
+  title: 'Info toast example',
+  message: 'Info toast example'
 }
 
 export const Warning = Template.bind({})
 Warning.args = {
   type: 'Warning',
-  text: 'Warning toast example'
+  title: 'Warning toast example',
+  message: 'Warning toast example'
 }
 
 export const Error = Template.bind({})
 Error.args = {
   type: 'Error',
-  text: 'Error toast example'
+  title: 'Error toast example',
+  message: 'Error toast example'
 }
 
 export const Success = Template.bind({})
 Success.args = {
   type: 'Success',
-  text: 'Success toast example'
+  title: 'Success toast example',
+  message: 'Success toast example'
 }
