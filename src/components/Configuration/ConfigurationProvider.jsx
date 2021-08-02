@@ -53,28 +53,18 @@ const ConfigurationProvider = ({
   )
 }
 ConfigurationProvider.propTypes = {
-  position: PropTypes.string,
-  parentNode: PropTypes.func,
-  edgeDistance: PropTypes.string,
-  internalSpacing: PropTypes.string,
-  notificationLifetime: PropTypes.number,
-  transition: PropTypes.string,
-  toastTypesConfig: PropTypes.object,
-  limit: PropTypes.number,
+  position: PropTypes.string.isRequired,
+  parentNode: PropTypes.func.isRequired,
+  edgeDistance: PropTypes.string.isRequired,
+  internalSpacing: PropTypes.string.isRequired,
+  notificationLifetime: PropTypes.number.isRequired,
+  transition: PropTypes.string.isRequired,
+  toastTypesConfig: PropTypes.object.isRequired,
+  limit: PropTypes.number.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired
-}
-ConfigurationProvider.defaultProps = {
-  position: 'top-left',
-  parentNode: () => document.querySelector('#root'),
-  edgeDistance: '2rem',
-  internalSpacing: '1rem',
-  notificationLifetime: 3000,
-  transition: 'slide',
-  toastTypesConfig: {},
-  limit: 3
 }
 
 export default ConfigurationProvider

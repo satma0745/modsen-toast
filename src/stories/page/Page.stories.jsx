@@ -32,15 +32,13 @@ const Example = ({
   <Page>
     <ToastsStack
       {...props}
-      preferences={{
-        position,
-        edgeDistance,
-        internalSpacing,
-        notificationLifetime,
-        transition,
-        toastTypesConfig,
-        limit
-      }}
+      position={position}
+      edgeDistance={edgeDistance}
+      internalSpacing={internalSpacing}
+      notificationLifetime={notificationLifetime}
+      transition={transition}
+      toastTypesConfig={toastTypesConfig}
+      limit={limit}
     />
   </Page>
 )
