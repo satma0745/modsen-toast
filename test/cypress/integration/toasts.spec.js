@@ -64,4 +64,10 @@ describe('Test modsen-toast', () => {
       .last()
       .should('have.css', 'transform', 'matrix(1, 0, 0, 1, 0, -202)')
   })
+
+  it('Parent node', () => {
+    cy.get('#send-notification').click()
+
+    cy.get('#overlay > #toasts-container').should('have.length', 1)
+  })
 })

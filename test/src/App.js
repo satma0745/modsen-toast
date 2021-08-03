@@ -21,6 +21,7 @@ const App = () => {
         limit={5}
         edgeDistance="20px"
         internalSpacing="10px"
+        parentNode={() => document.querySelector('#overlay')}
         toastTypesConfig={{
           Warning: {
             fgColor: '#000001',
