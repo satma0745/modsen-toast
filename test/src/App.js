@@ -20,7 +20,7 @@ const App = () => {
         limit={5}
         toastTypesConfig={{
           Warning: {
-            fgColor: '#000',
+            fgColor: '#000001',
             bgColor: '#F4E048'
           }
         }}

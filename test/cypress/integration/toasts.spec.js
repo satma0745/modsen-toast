@@ -37,4 +37,16 @@ describe('Test modsen-toast', () => {
     cy.wait(1500)
     cy.get('#toasts-container > *').should('have.length', 2)
   })
+
+  it('Toast types config', () => {
+    cy.get('#send-notification').click()
+
+    cy.get('#toasts-container > div > div')
+      .first()
+      .should('have.css', 'background-color', 'rgb(244, 224, 72)')
+
+    cy.get('#toasts-container > div > div > div > div > p')
+      .first()
+      .should('have.css', 'color', 'rgb(0, 0, 1)')
+  })
 })
