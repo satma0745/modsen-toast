@@ -1,4 +1,5 @@
 import { ToastsStack, sendNotification } from 'modsen-toast'
+import { ReactComponent as WarningIcon } from './assets/warning.svg'
 
 const App = () => {
   return (
@@ -21,7 +22,8 @@ const App = () => {
         toastTypesConfig={{
           Warning: {
             fgColor: '#000001',
-            bgColor: '#F4E048'
+            bgColor: '#F4E048',
+            icon: WarningIcon
           }
         }}
       />
