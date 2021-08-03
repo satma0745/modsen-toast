@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 const Container = styled.div`
   margin-left: 1em;
+  width: 14em;
   display: flex;
   flex-direction: column;
 `
@@ -13,11 +14,17 @@ const Title = styled.p`
   margin-bottom: 0.25em;
   font-size: 1.25em;
   font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   color: ${({ color }) => color};
 `
 
 const Message = styled.p`
   margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   color: ${({ color }) => color};
 `
 

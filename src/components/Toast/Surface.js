@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Surface = styled.div`
   height: 6em;
-  width: 20em;
+  width: 18em;
 
   padding: 0 1em;
 
