@@ -16,9 +16,11 @@ const App = () => {
 
       <ToastsStack
         id="toasts-container"
-        position="top-left"
+        position="bottom-left"
         notificationLifetime={1500}
         limit={5}
+        edgeDistance="20px"
+        internalSpacing="10px"
         toastTypesConfig={{
           Warning: {
             fgColor: '#000001',

@@ -49,4 +49,19 @@ describe('Test modsen-toast', () => {
       .first()
       .should('have.css', 'color', 'rgb(0, 0, 1)')
   })
+
+  it('Toast spacings', () => {
+    cy.get('#send-notification').click()
+    cy.get('#send-notification').click()
+
+    cy.get('#toasts-container').should('have.css', 'bottom', '20px')
+    cy.get('#toasts-container').should('have.css', 'left', '20px')
+
+    cy.get('#toasts-container > div')
+      .first()
+      .should('have.css', 'transform', 'matrix(1, 0, 0, 1, 0, -96)')
+    cy.get('#toasts-container > div')
+      .last()
+      .should('have.css', 'transform', 'matrix(1, 0, 0, 1, 0, -202)')
+  })
 })
