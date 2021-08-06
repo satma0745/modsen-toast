@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { ConfigurationProvider } from '@components/Configuration'
 import Toast from '@components/Toast'
 import toastTypesConfig from './toastTypesConfig'
 
@@ -14,15 +15,24 @@ export default {
           fontSize: '16px'
         }}
       >
-        <Story />
+        <ConfigurationProvider
+          position="top-left"
+          parentNode={() => document.querySelector('#root')}
+          edgeDistance="0"
+          internalSpacing="0"
+          notificationLifetime={0}
+          transition="slide"
+          toastTypesConfig={toastTypesConfig}
+          limit={1}
+        >
+          <Story />
+        </ConfigurationProvider>
       </div>
     )
   ]
 }
 
-const Template = (args) => (
-  <Toast dismiss={() => {}} {...args} toastTypesConfig={toastTypesConfig} />
-)
+const Template = (args) => <Toast dismiss={() => {}} {...args} />
 
 export const Info = Template.bind({})
 Info.args = {
