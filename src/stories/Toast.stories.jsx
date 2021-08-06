@@ -24,6 +24,8 @@ export default {
           transition="slide"
           toastTypesConfig={toastTypesConfig}
           limit={1}
+          transitionDuration={0}
+          collapseDuration={0}
         >
           <Story />
         </ConfigurationProvider>

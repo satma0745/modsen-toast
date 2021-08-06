@@ -2,12 +2,10 @@
 
 Toast notification library for Modsen LLC.
 
-
 ## Content
 
 - [Usage](#usage)
 - [Structure overview](#structure-overview)
-
 
 ## Usage
 
@@ -32,6 +30,8 @@ It enables You to specify following options:
    2. `bgColor` - toast background color as string (in any css-compatible format).
    3. `icon` - toast icon as React component.
 8. `limit` - maximum number of toasts displayed on the screen at the moment.
+9. `transitionDuration` - toast transition duration in _milliseconds_.
+10. `collapseDuration` - time in _milliseconds_, to move the rest of the toasts when a toast gets dismissed.
 
 Example (also defaults):
 
@@ -45,6 +45,8 @@ Example (also defaults):
   transition="slide"
   toastsTypeConfig={{}}
   limit={3}
+  transitionDuration={1000}
+  collapseDuration={500}
 />
 ```
 
@@ -75,7 +77,6 @@ if (payment.passed) {
 - run `yarn lint` to lint all `.js` and `.jsx` files under the `/src` folder
 - run `yarn build` to build the library (outputs to the `/dist` directory)
 - run `yarn storybook` to launch sotorybook on `http://localhost:6006`
-
 
 ## Structure overview
 

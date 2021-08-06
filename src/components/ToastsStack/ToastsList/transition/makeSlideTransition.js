@@ -1,7 +1,20 @@
-const transition = 'transform 1000ms'
+const getDirection = (horizontalPosition) => {
+  switch (horizontalPosition) {
+    case 'right':
+      return 1
+    case 'left':
+      return -1
+    default:
+      throw new Error('Unsupported horizontal position.')
+  }
+}
 
-const makeSlideTransitionStyles = ({ direction }) => {
-  const extremeOffset = `calc(${direction} * 150%)`
+const makeSlideTransitionStyles = ({
+  transitionDuration,
+  horizontalPosition
+}) => {
+  const transition = `transform ${transitionDuration}ms`
+  const extremeOffset = `calc(${getDirection(horizontalPosition)} * 150%)`
 
   return {
     entering: { transform: `translateX(${extremeOffset}` },

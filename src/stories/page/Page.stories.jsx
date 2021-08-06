@@ -27,6 +27,8 @@ const Example = ({
   transition,
   notificationLifetime,
   limit,
+  transitionDuration,
+  collapseDuration,
   ...props
 }) => (
   <Page>
@@ -39,6 +41,8 @@ const Example = ({
       transition={transition}
       toastTypesConfig={toastTypesConfig}
       limit={limit}
+      transitionDuration={transitionDuration}
+      collapseDuration={collapseDuration}
     />
   </Page>
 )
@@ -49,7 +53,9 @@ Example.args = {
   notificationLifetime: 3000,
   position: 'top-left',
   transition: 'slide',
-  limit: 3
+  limit: 3,
+  transitionDuration: 1000,
+  collapseDuration: 500
 }
 
 export default storyConfiguration

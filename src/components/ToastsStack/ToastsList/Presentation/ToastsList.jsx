@@ -4,27 +4,34 @@ import PropTypes from 'prop-types'
 
 import { useConfiguration } from '@components/Configuration'
 
-import { makeTransition, makeCollapse } from '../transition'
+import useTransition from '../transition'
 import SpacedToast from './SpacedToast'
 import ToastContainer from './ToastContainer'
 
 const ToastsList = ({ notifications }) => {
   const configuration = useConfiguration()
-  const transitionStyle = makeTransition(configuration)
+  const {
+    transitionDuration,
+    collapseDuration,
+    verticalPosition,
+    internalSpacing
+  } = configuration
+
+  const { toastTransition, collapseTransition } = useTransition(configuration)
 
   return (
     <ToastContainer>
       {notifications.map((notification) => (
         <Transition
           key={notification.id}
-          timeout={{ enter: 0, exit: 1500 }}
-          onExiting={makeCollapse({ delay: 1000, duration: 500 })}
+          timeout={{ enter: 0, exit: transitionDuration + collapseDuration }}
+          onExiting={collapseTransition}
         >
           {(transitionStage) => (
             <SpacedToast
-              style={transitionStyle[transitionStage]}
-              position={configuration.verticalPosition}
-              spacing={configuration.internalSpacing}
+              style={toastTransition[transitionStage]}
+              position={verticalPosition}
+              spacing={internalSpacing}
               {...notification}
             />
           )}

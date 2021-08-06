@@ -13,6 +13,8 @@ const ConfigurationProvider = ({
   transition,
   toastTypesConfig,
   limit,
+  transitionDuration,
+  collapseDuration,
   children
 }) => {
   const preferences = useMemo(
@@ -24,7 +26,9 @@ const ConfigurationProvider = ({
       notificationLifetime,
       transition,
       toastTypesConfig,
-      limit
+      limit,
+      transitionDuration,
+      collapseDuration
     }),
     [
       position,
@@ -34,7 +38,9 @@ const ConfigurationProvider = ({
       notificationLifetime,
       transition,
       toastTypesConfig,
-      limit
+      limit,
+      transitionDuration,
+      collapseDuration
     ]
   )
 
@@ -61,6 +67,8 @@ ConfigurationProvider.propTypes = {
   transition: PropTypes.string.isRequired,
   toastTypesConfig: PropTypes.object.isRequired,
   limit: PropTypes.number.isRequired,
+  transitionDuration: PropTypes.number.isRequired,
+  collapseDuration: PropTypes.number.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node

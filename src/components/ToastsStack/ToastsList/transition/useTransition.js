@@ -1,6 +1,10 @@
+import { useConfiguration } from '@components/Configuration'
+
 import makeFadeTransition from './makeFadeTransition'
 import makeSlideTransition from './makeSlideTransition'
 import makeZoomTransition from './makeZoomTransition'
+
+import makeCollapseTransition from './makeCollapseTransition'
 
 const selectTransition = ({ transition }) => {
   switch (transition) {
@@ -15,22 +19,15 @@ const selectTransition = ({ transition }) => {
   }
 }
 
-const getDirection = ({ horizontalPosition }) => {
-  switch (horizontalPosition) {
-    case 'right':
-      return 1
-    case 'left':
-      return -1
-    default:
-      throw new Error('Unsupported horizontal position.')
-  }
+const useTransition = () => {
+  const configuration = useConfiguration()
+
+  const makeTransition = selectTransition(configuration)
+  const toastTransition = makeTransition(configuration)
+
+  const collapseTransition = makeCollapseTransition(configuration)
+
+  return { toastTransition, collapseTransition }
 }
 
-const makeTransition = (configuration) => {
-  const transition = selectTransition(configuration)
-  const direction = getDirection(configuration)
-
-  return transition({ direction })
-}
-
-export default makeTransition
+export default useTransition

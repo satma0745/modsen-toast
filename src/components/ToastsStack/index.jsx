@@ -16,6 +16,8 @@ const ToastsStack = ({
   transition,
   toastTypesConfig,
   limit,
+  transitionDuration,
+  collapseDuration,
   ...props
 }) => (
   <ErrorBoundary>
@@ -28,6 +30,8 @@ const ToastsStack = ({
       transition={transition}
       toastTypesConfig={toastTypesConfig}
       limit={limit}
+      transitionDuration={transitionDuration}
+      collapseDuration={collapseDuration}
     >
       <ToastsPortal {...props}>
         <ToastsList />
@@ -43,7 +47,9 @@ ToastsStack.propTypes = {
   notificationLifetime: PropTypes.number,
   transition: PropTypes.string,
   toastTypesConfig: PropTypes.object,
-  limit: PropTypes.number
+  limit: PropTypes.number,
+  transitionDuration: PropTypes.number,
+  collapseDuration: PropTypes.number
 }
 ToastsStack.defaultProps = {
   position: 'top-left',
@@ -53,7 +59,9 @@ ToastsStack.defaultProps = {
   notificationLifetime: 3000,
   transition: 'slide',
   toastTypesConfig: {},
-  limit: 3
+  limit: 3,
+  transitionDuration: 1000,
+  collapseDuration: 500
 }
 
 export default ToastsStack

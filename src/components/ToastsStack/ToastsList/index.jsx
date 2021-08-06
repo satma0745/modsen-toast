@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useNotifications } from './notifications'
+import useNotifications from './notifications'
 import ToastsList from './Presentation'
 
 const ToastsStateWrapper = () => {

@@ -1,6 +1,6 @@
-const transition = (timingFunc, delay, duration) => {
+const transition = (timingFunction, delay, duration) => {
   return (property) => {
-    return `${property} ${duration} ${timingFunc} ${delay}`
+    return `${property} ${duration} ${timingFunction} ${delay}`
   }
 }
 
@@ -22,7 +22,7 @@ const to = (node) => {
   node.style.margin = 0
 }
 
-const collapse = (node, delay, duration) => {
+const collapseTransition = (node, { delay, duration }) => {
   requestAnimationFrame(() => {
     from(node, delay, duration)
 
@@ -30,8 +30,13 @@ const collapse = (node, delay, duration) => {
   })
 }
 
-const makeCollapse = ({ delay, duration }) => {
-  return (node) => collapse(node, `${delay}ms`, `${duration}ms`)
+const makeCollapseTransition = ({ transitionDuration, collapseDuration }) => {
+  return (node) => {
+    return collapseTransition(node, {
+      delay: `${transitionDuration}ms`,
+      duration: `${collapseDuration}ms`
+    })
+  }
 }
 
-export default makeCollapse
+export default makeCollapseTransition

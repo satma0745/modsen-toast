@@ -1,4 +1,3 @@
-import makeTransition from './makeTransition'
-import makeCollapse from './makeCollapseTransition'
+import useTransition from './useTransition'
 
-export { makeTransition, makeCollapse }
+export default useTransition

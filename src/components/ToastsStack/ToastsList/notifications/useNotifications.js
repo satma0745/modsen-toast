@@ -11,7 +11,8 @@ const useNotifications = () => {
   const [notifications, show, hide] = useList((notification) => notification.id)
   const [enqueue, dequeue] = useQueue()
 
-  const { notificationLifetime, limit } = useConfiguration()
+  const { notificationLifetime, transitionDuration, collapseDuration, limit } =
+    useConfiguration()
 
   const display = useCallback(
     (notification) => {
@@ -20,10 +21,10 @@ const useNotifications = () => {
       show({ ...notification, dismiss })
 
       if (notificationLifetime) {
-        setTimeout(dismiss, notificationLifetime)
+        setTimeout(dismiss, notificationLifetime + transitionDuration)
       }
     },
-    [show, hide, notificationLifetime]
+    [show, hide, notificationLifetime, transitionDuration]
   )
 
   useEffect(
@@ -45,10 +46,19 @@ const useNotifications = () => {
       const notification = dequeue()
 
       if (notification) {
-        display(notification)
+        setTimeout(() => {
+          display(notification)
+        }, transitionDuration + collapseDuration)
       }
     }
-  }, [dequeue, display, limit, notifications.length])
+  }, [
+    dequeue,
+    display,
+    limit,
+    notifications.length,
+    transitionDuration,
+    collapseDuration
+  ])
 
   return notifications
 }
