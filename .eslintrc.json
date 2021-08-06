@@ -31,7 +31,6 @@
     "import/resolver": {
       "alias": {
         "map": [
-          ["@transition", "./src/components/transition"],
           ["@components", "./src/components"],
           ["@data", "./src/data"]
         ],

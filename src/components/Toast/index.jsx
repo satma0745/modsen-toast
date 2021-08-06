@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { useConfiguration } from '@components/Configuration'
+
 import Surface from './Surface'
 import Content from './Content'
 import DismissButton from './DismissButton'
@@ -10,14 +12,8 @@ const defaultToastConfig = {
   bgColor: '#fff'
 }
 
-const ToastCore = ({
-  type,
-  title,
-  message,
-  dismiss,
-  toastTypesConfig,
-  ...props
-}) => {
+const ToastCore = ({ type, title, message, dismiss, ...props }) => {
+  const { toastTypesConfig } = useConfiguration()
   const toastTypeConfig = toastTypesConfig[type]
   const { fgColor, bgColor, icon } = toastTypeConfig ?? defaultToastConfig
 
@@ -32,8 +28,7 @@ ToastCore.propTypes = {
   type: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
-  dismiss: PropTypes.func.isRequired,
-  toastTypesConfig: PropTypes.object.isRequired
+  dismiss: PropTypes.func.isRequired
 }
 
 export default ToastCore

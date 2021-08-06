@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import { useConfiguration } from '@components/Configuration'
 
 const PositioningWrapper = ({ children, ...props }) => {
@@ -11,7 +12,7 @@ const PositioningWrapper = ({ children, ...props }) => {
       {...props}
       style={{
         position: 'absolute',
-        [horizontalPosition]: edgeDistance,
+        [horizontalPosition]: 0,
         [verticalPosition]: edgeDistance
       }}
     >

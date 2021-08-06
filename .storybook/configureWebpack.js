@@ -8,7 +8,6 @@ const resolve = (dir) => {
 const configureAliases = (config) => {
   config.resolve.alias = {
     ...config.resolve.alias,
-    '@transition': resolve('./src/components/transition'),
     '@components': resolve('./src/components'),
     '@data': resolve('./src/data')
   }
