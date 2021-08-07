@@ -4,15 +4,20 @@ const transition = (timingFunction, delay, duration) => {
   }
 }
 
+const getInitialTransition = (styles) => {
+  const property = styles.getPropertyValue('transition-property')
+  const duration = styles.getPropertyValue('transition-duration')
+  const timingFunction = styles.getPropertyValue('transition-timing-function')
+  const delay = styles.getPropertyValue('transition-delay')
+  return transition(timingFunction, delay, duration)(property)
+}
+
 const from = (node, delay, duration) => {
-  node.style.height = window.getComputedStyle(node, null).height
-
-  const initialTransition = window.getComputedStyle(node, null).transition
-  const transitionProps = ['height', 'padding', 'margin']
-
+  const computedStyles = window.getComputedStyle(node, null)
+  node.style.height = computedStyles.getPropertyValue('height')
   node.style.transition = [
-    initialTransition,
-    ...transitionProps.map(transition('ease', delay, duration))
+    getInitialTransition(computedStyles),
+    ...['height', 'padding', 'margin'].map(transition('ease', delay, duration))
   ].join(', ')
 }
 
@@ -25,7 +30,6 @@ const to = (node) => {
 const collapseTransition = (node, { delay, duration }) => {
   requestAnimationFrame(() => {
     from(node, delay, duration)
-
     requestAnimationFrame(() => to(node))
   })
 }
