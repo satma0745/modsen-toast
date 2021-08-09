@@ -1,22 +1,25 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 const useQueue = () => {
-  const [elements, setElements] = useState([])
+  const [queued, setQueued] = useState([])
 
-  const enqueue = (element) => {
-    setElements((oldElements) => [...oldElements, element])
-  }
+  const enqueue = useCallback(
+    (element) => {
+      setQueued((oldQueued) => [...oldQueued, element])
+    },
+    [setQueued]
+  )
 
-  const dequeue = () => {
-    if (elements.length < 1) {
-      return false
+  const dequeue = useCallback(() => {
+    if (queued.length < 1) {
+      return undefined
     }
 
-    const element = elements[0]
-    setElements((oldElements) => oldElements.slice(1))
+    const element = queued[0]
+    setQueued(queued.slice(1))
 
     return element
-  }
+  }, [queued, setQueued])
 
   return [enqueue, dequeue]
 }
