@@ -10,14 +10,14 @@ describe('Test modsen-toast', () => {
     cy.get('#send-notification').click()
     cy.get('#send-notification').click()
 
-    cy.get('#toasts-container > *').should('have.length', 3)
+    cy.get('#toasts-container > div > *').should('have.length', 3)
   })
 
   it('Notification description', () => {
     cy.get('#send-notification').click()
 
     const description = () =>
-      cy.get('#toasts-container > div> #1 > div').first().get('div > p')
+      cy.get('#toasts-container > div > #1 > div').first().get('div > p')
 
     description().first().should('have.text', 'Warning')
     description().last().should('have.text', 'Some warning message')
@@ -33,9 +33,9 @@ describe('Test modsen-toast', () => {
     cy.get('#send-notification').click()
     cy.get('#send-notification').click()
 
-    cy.get('#toasts-container > *').should('have.length', 5)
+    cy.get('#toasts-container > div > *').should('have.length', 5)
     cy.wait(1500)
-    cy.get('#toasts-container > *').should('have.length', 2)
+    cy.get('#toasts-container > div > *').should('have.length', 2)
   })
 
   it('Toast types config', () => {
@@ -50,19 +50,12 @@ describe('Test modsen-toast', () => {
       .should('have.css', 'color', 'rgb(0, 0, 1)')
   })
 
-  it('Toast spacings', () => {
+  it('Toast positioning', () => {
     cy.get('#send-notification').click()
     cy.get('#send-notification').click()
 
     cy.get('#toasts-container').should('have.css', 'bottom', '20px')
-    cy.get('#toasts-container').should('have.css', 'left', '20px')
-
-    cy.get('#toasts-container > div')
-      .first()
-      .should('have.css', 'transform', 'matrix(1, 0, 0, 1, 0, -96)')
-    cy.get('#toasts-container > div')
-      .last()
-      .should('have.css', 'transform', 'matrix(1, 0, 0, 1, 0, -202)')
+    cy.get('#toasts-container').should('have.css', 'left', '0px')
   })
 
   it('Parent node', () => {

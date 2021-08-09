@@ -18,6 +18,8 @@ const App = () => {
         id="toasts-container"
         position="bottom-left"
         notificationLifetime={1500}
+        transitionDuration={1000}
+        collapseDuration={0}
         limit={5}
         edgeDistance="20px"
         internalSpacing="10px"
