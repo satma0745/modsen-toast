@@ -3,5 +3,7 @@ node_modules
 dist/*
 !dist/package.json
 
+.idea
+
 yarn-debug.log*
 yarn-error.log*
