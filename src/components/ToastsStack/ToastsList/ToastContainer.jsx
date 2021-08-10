@@ -20,6 +20,7 @@ const StyledTransitionGroup = styled(TransitionGroup)`
   overflow: hidden;
   display: flex;
   flex-direction: ${({ position }) => getFlexDirection(position)};
+  padding: 0.375em; //shadow
   padding-${({ side }) => side}: ${({ offset }) => offset};
 `
 
