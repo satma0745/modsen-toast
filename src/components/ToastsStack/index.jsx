@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { ConfigurationProvider } from '@components/Configuration'
+import ConfigurationProvider from '@components/Configuration'
 
 import ToastsList from './ToastsList'
 import ToastsPortal from './ToastsPortal'

@@ -1,22 +1,16 @@
 import React from 'react'
 import { Transition } from 'react-transition-group'
-import PropTypes from 'prop-types'
 
-import { useConfiguration } from '@components/Configuration'
+import { useConfiguration, useNotifications, useTransition } from '@hooks'
 
-import useTransition from '../transition'
 import SpacedToast from './SpacedToast'
 import ToastContainer from './ToastContainer'
 
-const ToastsList = ({ notifications }) => {
+const ToastsList = () => {
   const configuration = useConfiguration()
-  const {
-    transitionDuration,
-    collapseDuration,
-    verticalPosition,
-    internalSpacing
-  } = configuration
+  const { transitionDuration, collapseDuration } = configuration
 
+  const notifications = useNotifications()
   const { toastTransition, collapseTransition } = useTransition(configuration)
 
   return (
@@ -30,8 +24,8 @@ const ToastsList = ({ notifications }) => {
           {(transitionStage) => (
             <SpacedToast
               style={toastTransition[transitionStage]}
-              position={verticalPosition}
-              spacing={internalSpacing}
+              position={configuration.verticalPosition}
+              spacing={configuration.internalSpacing}
               {...notification}
             />
           )}
@@ -39,9 +33,6 @@ const ToastsList = ({ notifications }) => {
       ))}
     </ToastContainer>
   )
-}
-ToastsList.propTypes = {
-  notifications: PropTypes.array.isRequired
 }
 
 export default ToastsList

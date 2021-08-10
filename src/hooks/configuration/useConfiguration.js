@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import ConfigurationContext from './ConfigurationContext'
+import { ConfigurationContext } from '@components/Configuration'
 
 const useConfiguration = () => {
   return useContext(ConfigurationContext)

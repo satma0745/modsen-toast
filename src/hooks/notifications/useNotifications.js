@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from 'react'
 
-import { useConfiguration } from '@components/Configuration'
+import useConfiguration from '@hooks/configuration'
 import { subscribeToNotifications } from '@data/notifications'
 
 import create from './createNotification'

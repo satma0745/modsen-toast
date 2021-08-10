@@ -1,4 +1,4 @@
-import { useConfiguration } from '@components/Configuration'
+import useConfiguration from '@hooks/configuration'
 
 import makeFadeTransition from './makeFadeTransition'
 import makeSlideTransition from './makeSlideTransition'

@@ -1,4 +1,5 @@
 import ConfigurationProvider from './ConfigurationProvider'
-import useConfiguration from './useConfiguration'
+import ConfigurationContext from './ConfigurationContext'
 
-export { ConfigurationProvider, useConfiguration }
+export default ConfigurationProvider
+export { ConfigurationContext }

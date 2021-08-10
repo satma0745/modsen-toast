@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ConfigurationProvider } from '@components/Configuration'
+import ConfigurationProvider from '@components/Configuration'
 import Toast from '@components/Toast'
 import toastTypesConfig from './toastTypesConfig'
 

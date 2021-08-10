@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { useConfiguration } from '@components/Configuration'
+import { useConfiguration } from '@hooks'
 
 const PositioningWrapper = ({ children, ...props }) => {
   const { horizontalPosition, verticalPosition, edgeDistance } =

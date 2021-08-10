@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { TransitionGroup } from 'react-transition-group'
 import PropTypes from 'prop-types'
 
-import { useConfiguration } from '@components/Configuration'
+import { useConfiguration } from '@hooks'
 
 const getFlexDirection = (position) => {
   switch (position) {

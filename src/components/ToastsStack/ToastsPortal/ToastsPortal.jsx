@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
-import { useConfiguration } from '@components/Configuration'
+import { useConfiguration } from '@hooks'
 import PositioningWrapper from './PositioningWrapper'
 
 const ToastsPortal = ({ children, ...props }) => {
