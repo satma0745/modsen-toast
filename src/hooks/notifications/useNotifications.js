@@ -25,8 +25,8 @@ const useNotifications = () => {
 
         const dismiss = () => hide(notification.id)
 
-        const dismissableNotification = { ...notification, dismiss }
-        show(dismissableNotification)
+        const dismissibleNotification = { ...notification, dismiss }
+        show(dismissibleNotification)
       }),
     [hide, notificationLifetime, show, transitionDuration]
   )

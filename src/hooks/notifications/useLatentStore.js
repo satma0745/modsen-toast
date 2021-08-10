@@ -23,9 +23,12 @@ const useLatentStore = ({ limit, delay, lifetime, keySelector }) => {
     (element) => {
       setShowed((oldShowed) => [...oldShowed, element])
       setShowedCount((oldShowedCount) => oldShowedCount + 1)
-      setTimeout(() => {
-        hide(keySelector(element))
-      }, lifetime)
+
+      if (lifetime) {
+        setTimeout(() => {
+          hide(keySelector(element))
+        }, lifetime)
+      }
     },
     [setShowed, setShowedCount, hide, lifetime, keySelector]
   )
